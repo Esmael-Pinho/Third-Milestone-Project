@@ -1,0 +1,14 @@
+/* ------------------------------------------------RESETS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+/* -------------------------------------------------------------- IMPORTS----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Oswald:wght@500&family=Roboto+Mono&family=Ubuntu:wght@400;700&display=swap');
+
