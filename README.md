@@ -212,7 +212,7 @@
 
 # Testing
 
-- Please refer [here](TESTING.md) for more information on testing of the CoreShare website
+- 
 
 # Deployment
 
