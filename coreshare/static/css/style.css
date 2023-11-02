@@ -12,3 +12,207 @@
 /* -------------------------------------------------------------- IMPORTS----------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Oswald:wght@500&family=Roboto+Mono&family=Ubuntu:wght@400;700&display=swap');
 
+
+:root {
+  --light-blue: #5fa2c3;
+  --grey: #9e9c9c;
+  --red: #e61a21;
+  --light-red: #e74536;
+  --White: #fff;
+  --dark-blue: #051417;
+  --blue: #1a5eb3;
+  --yellow: #ffc800;
+  --green: #28e61a;
+  --gradient: linear-gradient(90deg, #800080, #e74536, #800080);
+}
+/* ---------------  /End Roots  -------------- */
+
+/* Body */
+html {
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  position: relative;
+  background-color: var(--blue);
+}
+
+
+.page-section {
+  padding: 6rem 0;
+
+  h2.section-heading {
+      font-size: 2.5rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+  }
+
+  h3.section-subheading {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      font-family: "Ubuntu", 'Oswald', monospace;
+      margin-bottom: 4rem;
+  }
+}
+
+
+/* Navbar */
+
+#introNav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: var(--grey);
+    background-color: transparent;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+}
+.navbar-toggler {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-family: "Ubuntu", 'Oswald', monospace;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    color: var(--yellow);
+    font-family: Oswald;
+    font-weight: bold;
+    letter-spacing: 0.0625em;
+    text-transform: uppercase;
+
+    img {
+        height: 1.5rem;
+    }
+}
+
+.navbar-nav {
+    .nav-item {
+        .nav-link {
+          font-family: "Ubuntu", 'Oswald', monospace;
+            font-size: 0.95rem;
+            color: #fff;
+            letter-spacing: 0.0625em;
+
+            &.active,
+            &:hover {
+                color: #ffc800;
+            }
+        }
+    }
+}
+
+
+/* Intro */
+header {
+  display: block;
+}
+header.Intro {
+  padding-top: 10.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  color: #fff;
+  background-image: url(../images/header-bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+.Intro-subheading {
+  font-size: 3.5rem;
+}
+.Intro-heading:first{
+  margin: 1.5rem;
+}
+.second{
+  margin-bottom: 1.5rem;
+}
+.Intro-heading {
+  font-size: 1.5rem;
+}
+header p{
+  margin-top: 2rem;
+}
+.log-btn {
+  margin: 1.75rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Button */
+.btn-xl {
+  padding: 1.25rem 2.5rem;
+  font-family: "Ubuntu", 'Oswald', monospace;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+/* Footer Links */
+.btn-social {
+  height: 2.85rem;
+  width: 2.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 100%;
+}
+.footer-link{
+  font-size: 1.225rem;
+}
+
+/* Media screen width equal to or greater than the large breakpoint */
+@media (max-width: 1200px) {
+    #introNav {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        border: none;
+        background-color: transparent;
+        transition: padding-top 0.3s ease-in-out,
+            padding-bottom 0.3s ease-in-out;
+
+        .navbar-brand {
+            font-size: 1.5em;
+            transition: font-size 0.3s ease-in-out;
+
+            img {
+                height: 2rem;
+                transition: height 0.3s ease-in-out;
+            }
+        }
+
+        /* Styling for when the navbar shrinks on larger screens */
+        &.navbar-shrink {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            background-color: var(--grey);
+
+            .navbar-brand {
+                font-size: 1.25em;
+
+                svg,
+                img {
+                    height: 1.5rem;
+                }
+            }
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 1rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 990px) {
+  section {
+    padding: 9rem 0;
+  }
+}

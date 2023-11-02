@@ -14,14 +14,73 @@
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+        <!-- My stylesheet -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
         {% block styles %} {% endblock %}
         
-        <link rel="icon" type="image/x-icon" href="">
+        <link rel="icon" type="image/x-icon" href="../static/images/top-logo.webp">
         <title>CoreShare</title>
     </head>
     <body>
 
-        <h1>Hello There !</h1>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="introNav">
+            <div class="container">
+                <!-- <a class="navbar-brand" href=""><img src="../static/images/home-logo.webp" alt="CoreShare Logo" /></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="">LogIn</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="Intro">
+            <div class="container">
+                <div class="Intro-subheading">Welcome To</div>
+                <div class="Intro-header-img"><img src="../static/images/home-logo.png"></div> 
+                <div class="Intro-heading">Share your Christmas moments</div>
+                <div class="Intro-heading second"> with your community</div>
+                <a class="btn btn-primary btn-xl text-uppercase log-btn" href="">LogIn</a>
+                <p class="text-center">Don't have an account yet? <a class="reg-link">Register Account</a></p>
+            </div>
+        </header>
+
+        <main class="">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <!-- <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start"> CoreShare 2023 &copy; All rights reserved</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i>
+                            <span class="sr-only">Twitter Link</span>
+                        </a>
+                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i>
+                            <span class="sr-only">Facebook Link</span>
+                        </a>
+                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>
+                            <span class="sr-only">LinkedIn Link</span>
+                        </a>
+                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i>
+                            <span class="sr-only">InstagramLink</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none footer-link" href="#!">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
 
         <!-- Bootstrap Script -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -30,7 +89,7 @@
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
         
         <!-- My Script -->
-        <script src="assets/js/script.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
         
     </body>
