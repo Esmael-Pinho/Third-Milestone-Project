@@ -90,7 +90,7 @@ body {
     .nav-item {
         .nav-link {
           font-family: "Ubuntu", 'Oswald', monospace;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #fff;
             letter-spacing: 0.0625em;
 
@@ -104,22 +104,23 @@ body {
 
 
 /* Intro */
-header {
-  display: block;
-}
-header.Intro {
+
+.Intro {
   padding-top: 10.5rem;
   padding-bottom: 1rem;
   text-align: center;
-  color: #fff;
-  background-image: url(../images/);
+  background-image: url(../images/intro-img-2.jpg);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
+  filter: brightness(93%); 
 }
 .Intro-subheading {
   font-size: 3.5rem;
+}
+.Intro-heading,.Intro-subheading, p {
+  color: var(--White);
 }
 .Intro-heading:first{
   margin: 1.5rem;
@@ -135,6 +136,12 @@ header p{
 }
 .log-btn {
   margin: 1.75rem;
+}
+.reg-link {
+  color: var(--White);
+}
+.reg-link:hover {
+  color: var(--yellow);
 }
 
 /* Footer */
