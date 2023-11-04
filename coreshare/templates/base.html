@@ -16,7 +16,6 @@
 
         <!-- My stylesheet -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-        {% block styles %} {% endblock %}
         
         <link rel="icon" type="image/x-icon" href="../static/images/top-logo.webp">
         <title>CoreShare</title>
@@ -39,37 +38,48 @@
                             <li class="nav-item"><a class="nav-link" href="">Home <i class="fas fa-home"></i></a></li>
                             <li class="nav-item"><a class="nav-link" href="">My Memories</a></li>
                             <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="">Log out</a></li>
                         {% else %}
-                        <li class="nav-item"><a class="nav-link" href="">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- Masthead-->
-        <header class="Intro">
-            <div class="container">
-                <div class="Intro-subheading">Welcome To</div>
-                <div class="Intro-header-img"><img src="../static/images/Intro-logo.webp"></div> 
-                <div class="Intro-heading">Share your Christmas moments</div>
-                <div class="Intro-heading second"> with your community</div>
-                <a class="btn btn-primary btn-xl text-uppercase log-btn" href="">LogIn</a>
-                <p class="text-center">Don't have an account yet? <a class="reg-link">Register Account</a></p>
-            </div>
-        </header>
 
-        <main class="">
+        <div>
+            <div class="container">
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="row flashes">
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %} {% endif %} {% endwith %}
+            </div>
+        </div>
+        
+        <main>
             {% block content %}
+                <header class="Intro">
+                    <div class="container">
+                        <div class="Intro-subheading">Welcome To</div>
+                        <div class="Intro-header-img"><img src="../static/images/Intro-logo.webp"></div> 
+                        <div class="Intro-heading">Share your Christmas moments</div>
+                        <div class="Intro-heading second"> with your community</div>
+                        <a class="btn btn-primary btn-xl text-uppercase log-btn" href="{{ url_for('login') }}">Login</a>
+                        <p class="text-center">Don't have an account yet? <a class="reg-link">Register Account</a></p>
+                    </div>
+                </header>
             {% endblock %}
         </main>
 
         <!-- Footer -->
-        <!-- <footer class="footer py-4">
+        <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start"> CoreShare 2023 &copy; All rights reserved</div>
+                    <div class="col-lg-4 text-lg-start">
+                        <span class="bold yellow">CoreShare</span> <span> &copy; All rights reserved</span>
+                    </div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i>
                             <span class="sr-only">Twitter Link</span>
@@ -85,11 +95,13 @@
                         </a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none footer-link" href="#!">Contact Us</a>
+                        <a class="link-dark text-decoration-none me-3" href="#!">
+                            <span class="bold footer-cont">Contact Us</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </footer> -->
+        </footer>
 
         <!-- Bootstrap Script -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

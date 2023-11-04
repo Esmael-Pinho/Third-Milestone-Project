@@ -18,7 +18,7 @@
   --grey: #9e9c9c;
   --red: #e61a21;
   --light-red: #e74536;
-  --White: #fff;
+  --white: #fff;
   --dark-blue: #051417;
   --blue: #1a5eb3;
   --yellow: #ffc800;
@@ -34,26 +34,7 @@ html {
 
 body {
   position: relative;
-  background-color: var(--blue);
-}
-
-
-.page-section {
-  padding: 6rem 0;
-
-  h2.section-heading {
-      font-size: 2.5rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
-  }
-
-  h3.section-subheading {
-      font-size: 1rem;
-      font-weight: 400;
-      font-style: italic;
-      font-family: "Ubuntu", 'Oswald', monospace;
-      margin-bottom: 4rem;
-  }
+  background-color: var(--grey);
 }
 
 
@@ -75,15 +56,9 @@ body {
 }
 
 .navbar-brand {
-    color: var(--yellow);
-    font-family: Oswald;
-    font-weight: bold;
-    letter-spacing: 0.0625em;
-    text-transform: uppercase;
-
-    img {
-        height: 1.5rem;
-    }
+  img {
+      height: 1.5rem;
+  }
 }
 
 .navbar-nav {
@@ -91,12 +66,12 @@ body {
         .nav-link {
           font-family: "Ubuntu", 'Oswald', monospace;
             font-size: 1rem;
-            color: #fff;
-            letter-spacing: 0.0625em;
+            color: var(--white);
+            letter-spacing: 0.0252em;
 
             &.active,
             &:hover {
-                color: #ffc800;
+                color: var(--yellow);
             }
         }
     }
@@ -120,7 +95,7 @@ body {
   font-size: 3.5rem;
 }
 .Intro-heading,.Intro-subheading, p {
-  color: var(--White);
+  color: var(--white);
 }
 .Intro-heading:first{
   margin: 1.5rem;
@@ -138,7 +113,8 @@ header p{
   margin: 1.75rem;
 }
 .reg-link {
-  color: var(--White);
+  color: var(--white);
+  cursor: pointer;
 }
 .reg-link:hover {
   color: var(--yellow);
@@ -150,12 +126,21 @@ header p{
   font-size: 1.2rem;
 }
 
+.yellow,.btn-social:hover,.footer-cont:hover {
+  color: var(--yellow);
+}
+
 /* Button */
 .btn-xl {
   padding: 1.25rem 2.5rem;
   font-family: "Ubuntu", 'Oswald', monospace;
   font-size: 1.125rem;
   font-weight: bold;
+}
+
+.log-btn:hover {
+  background-color: var(--white);
+  color: var(--blue);
 }
 
 /* Footer Links */
@@ -168,54 +153,26 @@ header p{
   padding: 0;
   border-radius: 100%;
 }
-.footer-link{
-  font-size: 1.225rem;
+
+.btn-social i {
+  font-size: 24px;
+}
+
+.login-page, .register-page {
+  padding-top: 10.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  background-image: url(../images/intro-img-3.jpg);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  overflow-x: hidden;
 }
 
 /* Media screen width equal to or greater than the large breakpoint */
-@media (max-width: 1200px) {
-    #introNav {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-        border: none;
-        background-color: transparent;
-        transition: padding-top 0.3s ease-in-out,
-            padding-bottom 0.3s ease-in-out;
-
-        .navbar-brand {
-            font-size: 1.5em;
-            transition: font-size 0.3s ease-in-out;
-
-            img {
-                height: 2rem;
-                transition: height 0.3s ease-in-out;
-            }
-        }
-
-        /* Styling for when the navbar shrinks on larger screens */
-        &.navbar-shrink {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            background-color: var(--grey);
-
-            .navbar-brand {
-                font-size: 1.25em;
-
-                svg,
-                img {
-                    height: 1.5rem;
-                }
-            }
-        }
-
-        .navbar-nav .nav-item {
-            margin-right: 1rem;
-
-            &:last-child {
-                margin-right: 0;
-            }
-        }
-    }
+@media (min-width: 1200px) {
+    
 }
 
 @media (max-width: 990px) {
