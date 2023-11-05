@@ -1,7 +1,39 @@
 {% extends "base.html" %} 
 {% block content %}
 
+    <div class="index-cont">
 
+        <section class="dash-section bg-secondary" id="dashboard">
+            <div class="row justify-content-md-center mess-1">
+                <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
+                    <div class="card-body">
+                        <h4 class="card-title">Welcome {{ session['user'] }} !</h4>
+                        <p class="card-text">You can view, share, your best christmas moments<br>
+                            photos, cakes, stories, presents as well as someone elses.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Dashboard posts-->
+                        <div class="dashboard-item">
+                            <a class="dashboard-link" data-bs-toggle="modal" href="#">
+                                <div class="dashboard-hover">
+                                    <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="../static/images/intro-img-1.jpg" alt="..." />
+                            </a>
+                            <div class="dashboard-caption">
+                                <div class="dashboard-caption-heading">Threads</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
 {% endblock %}

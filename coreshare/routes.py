@@ -7,7 +7,7 @@ from coreshare.model import User
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -37,7 +37,7 @@ def register():
         # put the new user into 'session' mode / active
         session["user"] = request.form.get("user_name").lower()
         flash("Registration Successful!")
-        return redirect(url_for(""))
+        return redirect(url_for("login"))
 
     return render_template("register.html")
 
@@ -58,7 +58,7 @@ def login():
                 flash("Welcome, {}".format(
                     request.form.get("user_name")))
                 return redirect(url_for(
-                    ""))
+                    "index"))
             else:
                 # not password match
                 flash("Incorrect Username and/or Password")
