@@ -7,7 +7,7 @@ from coreshare.model import User
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("contact.html")
 
 
 @app.route("/register", methods=["GET", "POST"])

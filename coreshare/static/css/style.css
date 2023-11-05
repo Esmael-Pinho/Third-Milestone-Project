@@ -14,7 +14,7 @@
 
 
 :root {
-  --light-blue: #5fa2c3;
+  --light-blue: #40a6da;
   --grey: #9e9c9c;
   --red: #e61a21;
   --light-red: #e74536;
@@ -30,6 +30,9 @@
 /* Body */
 html {
   scroll-padding-top: 4.5rem;
+}
+.light-blue {
+  color: var(--light-blue);
 }
 
 body {
@@ -142,6 +145,11 @@ header p{
   color: var(--blue);
 }
 
+.footer-cont, .web-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
 /* Footer Links */
 .btn-social {
   height: 2.85rem;
@@ -171,17 +179,18 @@ header p{
 }
 .reg-log-title {
   font-size: 56px;
-  color: var(--white);
+  font-weight: 900;
 }
 
 .mess-1 {
   margin: 1.5rem auto 3rem auto;
+  font-family: "Ubuntu", 'Oswald', monospace;
 }
 .mess-2 {
   margin-top: 1rem;
 }
 
-.form-floating {
+.form-floating, .form-group {
   margin: .5rem;
 }
 
@@ -261,6 +270,24 @@ header p{
 
 .welcome-msg {
   background-color: transparent;
+}
+
+#contact {
+  background-image: url(../images/intro-img-1.jpg);
+  height: 100vh;
+}
+
+#contact .container {
+  padding-top: 6rem;
+}
+.form-group textarea {
+  height: 128px;
+}
+.cont-us {
+  margin-bottom: 4rem;
+}
+.contact-btn {
+  margin-top: 4rem;
 }
 
 
