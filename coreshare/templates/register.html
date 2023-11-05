@@ -6,57 +6,48 @@
         <h2 class="reg-log-title">Register</h2>
     </div>
 
-    <div class="row justify-content-md-center">
-        <div class="card text-bg-secondary col-sm-12 col-md-7 col-lg-4">
+    <div class="row justify-content-md-center mess-1">
+        <div class="card text-bg-primary col-sm-12 col-md-7 col-lg-4">
             <div class="card-body">
                 <h4 class="card-title">Welcome to CoreShare</h4>
-                <p class="card-text">An app to share, your best christmas moments.</p>
+                <p class="card-text">The place to share, your best christmas moments<br>
+                    from photos, cakes, stories, presents...</p>
                 Please register below to continue:
             </div>
         </div>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="card col-sm-12 col-md-7 col-lg-4 text-center">
-            <div class="card-body">
-                <form method="POST" action="{{ url_for('register') }}">
-                    <!--username-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="user_name" name="user_name" type="text" minlength="3" maxlength="30" pattern="^[a-zA-Z0-9]{3,30}$" class="validate" required>
-                        <label for="user_name">Username</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <!--first name-->
-                    <div class="input-field col s6">
-                        <input id="first_name" name="first_name" type="text" class="validate" required>
-                        <label for="first_name">First Name</label>
-                    </div>
-                    <!--last name-->
-                    <div class="input-field col s6">
-                        <input id="last_name" name="last_name" type="text" class="validate" required>
-                        <label for="last_name">Last Name</label>
-                    </div>
-                </div>
-                <!--password-->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                    <!--Register-->
-                    <button type="submit" class="btn btn-primary btn-xl text-uppercase log-btn col-4">Register</button>
-                </form>
+    <div class="text-bg-warning form-signin w-100 m-auto">
+        <form method="POST" action="{{ url_for('register') }}">
+            <!--username-->
+            <div class="form-floating">
+                <input id="user_name" name="user_name" type="text" minlength="3" maxlength="30" pattern="^[a-zA-Z0-9]{3,30}$" class="validate form-control" placeholder=" Username" required />
+                <label for="user_name"><i class="fas fa-user-cog prefix brown-text lighten-2"></i> Username</label>
             </div>
-        </div>
+            <!--first_name-->
+            <div class="form-floating">
+                <input id="first_name" name="first_name" type="text" class="validate form-control" placeholder=" First Name" required>
+                <label for="first_name">First Name</label>
+            </div>
+            <!--last_name-->
+            <div class="form-floating">
+                <input id="last_name" name="last_name" type="text" class="validate form-control" placeholder=" Last Name" required>
+                <label for="last_name">Last Name</label>
+            </div>
+            <!--password-->
+            <div class="form-floating">
+                <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" placeholder=" Password" required />
+                <label for="password" class="col-form-label"><i class="fas fa-user-lock prefix brown-text lighten-2"></i> Password</label>
+            </div>
+        
+            <button class="btn btn-primary w-90 py-2 text-uppercase reg-btn" type="submit">register</button>
+        </form>
     </div>
 
-    <div class="row">
+    <div class="row mess-2">
         <div class="col-12">
-            <p class="center-align">
-                Already registered? <a href="{{ url_for('login') }}">Log In here.</a>
+            <p class="center-align black">
+                Already registered? <a href="{{ url_for('login') }}">Login here.</a>
             </p>
         </div>
     </div>

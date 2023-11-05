@@ -2,52 +2,48 @@
 {% block content %}
 
     <div class="login-page container">
-        <div class="title-cont">
-            <h2 class="reg-log-title">Log In</h2>
+        <div class="">
+            <div class="title-cont">
+                <h2 class="reg-log-title">Login</h2>
+            </div>
+            
+            <div class="row justify-content-md-center mess-1">
+                <div class="card text-bg-primary col-sm-12 col-md-7 col-lg-4">
+                    <div class="card-body">
+                        <h4 class="card-title">Welcome to CoreShare</h4>
+                        <p class="card-text">The place to share, your best christmas moments<br>
+                            from photos, cakes, stories, presents...</p>
+                        Please login below to continue:
+                    </div>
+                </div>
+            </div>
+    
+            <div class="text-bg-warning form-signin w-100 m-auto">
+                <form method="POST" action="{{ url_for('login') }}">
+                    <!--username-->
+                    <div class="form-floating">
+                        <input id="user_name" name="user_name" type="text" minlength="3" maxlength="30" pattern="^[a-zA-Z0-9]{3,30}$" class="validate form-control" placeholder=" Username" required />
+                        <label for="user_name"><i class="fas fa-user-cog prefix brown-text lighten-2"></i> Username</label>
+                    </div>
+                    <!--password-->
+                    <div class="form-floating">
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate form-control" placeholder=" Password" required />
+                        <label for="password" class="col-form-label"><i class="fas fa-user-lock prefix brown-text lighten-2"></i> Password</label>
+                    </div>
+                
+                    <button class="btn btn-primary w-90 py-2 text-uppercase reg-btn" type="submit">Login</button>
+                </form>
+            </div>
+            
+    
+            <div class="row mess-2">
+                <div class="col-12">
+                    <p class="center-align black">
+                        Not yet sign up? <a href="{{ url_for('register') }}">Register here.</a></p>
+                </div>
+            </div>
         </div>
         
-        <div class="row justify-content-md-center">
-            <div class="card text-bg-secondary col-sm-12 col-md-7 col-lg-4">
-                <div class="card-body">
-                    <h4 class="card-title">Welcome to CoreShare</h4>
-                    <p class="card-text">An app to share, your best christmas moments.</p>
-                    Please login below to continue:
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="card col-sm-12 col-md-7 col-lg-4 text-center">
-                <div class="card-body">
-                    <form method="POST" action="{{ url_for('login') }}">
-                        <!--username-->
-                        <div class="row">
-                            <div class="input-field col-12">
-                                <i class="fas fa-user-cog prefix brown-text lighten-2"></i>
-                                <input id="user_name" name="user_name" type="text" minlength="3" maxlength="30" pattern="^[a-zA-Z0-9]{3,30}$" class="validate" required />
-                                <label for="user_name"> Username</label>
-                            </div>
-                        </div>
-                        <!--password-->
-                        <div class="row">
-                            <div class="input-field col-12">
-                                <i class="fas fa-user-lock prefix brown-text lighten-2"></i>
-                                <input id="password" name="password" type="password" minlength="3" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required />
-                                <label for="password"> Password</label>
-                            </div>
-                        </div>
-                        <!--login-->
-                        <button type="submit" class="btn btn-primary btn-xl text-uppercase log-btn col-4">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <p class="center-align">Not yet sign up? <a href="{{ url_for('register') }}">Register here.</a></p>
-            </div>
-        </div>
     </div>
 
 {% endblock %}

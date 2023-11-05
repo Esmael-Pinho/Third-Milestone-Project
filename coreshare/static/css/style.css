@@ -138,7 +138,7 @@ header p{
   font-weight: bold;
 }
 
-.log-btn:hover {
+.log-btn:hover, .reg-btn:hover {
   background-color: var(--white);
   color: var(--blue);
 }
@@ -159,16 +159,58 @@ header p{
 }
 
 .login-page, .register-page {
-  padding-top: 10.5rem;
-  padding-bottom: 1rem;
+  padding-top: 4.5rem;
+  padding-bottom: 2.9rem;
   text-align: center;
   background-image: url(../images/intro-img-3.jpg);
   background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
   background-size: cover;
-  overflow-x: hidden;
+  filter: brightness(93%); 
 }
+.login-page {
+  padding-bottom: 11.2rem;
+}
+.reg-log-title {
+  font-size: 56px;
+  color: var(--white);
+}
+
+.mess-1 {
+  margin: 1.5rem auto 3rem auto;
+}
+.mess-2 {
+  margin-top: 1rem;
+}
+
+.form-floating {
+  margin: .5rem;
+}
+
+.black {
+  color: #000;
+  font-weight: bolder;
+}
+.black a {
+  color: #fff;
+  text-decoration: none;
+}
+.black a:hover {
+  color: var(--yellow);
+  text-decoration: underline var(--white);
+}
+.form-signin {
+  max-width: 430px;
+  padding: 1rem;
+}
+.grey-container {
+  max-width: 1000px;
+  padding: 1rem;
+  margin: auto;
+  background-color: rgba(21, 21, 21, 0.311);
+  border-radius: 15px;
+}
+
+
 
 /* Media screen width equal to or greater than the large breakpoint */
 @media (min-width: 1200px) {
