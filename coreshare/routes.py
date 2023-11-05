@@ -17,3 +17,17 @@ def register():
         # checks if username already exists
         existing_user = User.query.filter(
             User.user_name == request.form.get("user_name").lower()).all()
+
+        if existing_user:
+            flash(
+                "Username already exists. Please try a different username")
+            return redirect(url_for("register"))
+
+        user = User(
+            user_name=request.form.get("user_name").lower(),
+            user_first_name=request.form.get("first_name").lower(),
+            user_last_name=request.form.get("last_name").lower(),
+            password=generate_password_hash(request.form.get("password"))
+        )
+
+        
