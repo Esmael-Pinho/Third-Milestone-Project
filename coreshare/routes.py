@@ -30,4 +30,15 @@ def register():
             password=generate_password_hash(request.form.get("password"))
         )
 
-        
+        # Adds the user to the databsase 
+        db.session.add(user)
+        db.session.commit()
+
+        # put the new user into 'session' mode / active
+        session["user"] = request.form.get("user_name").lower()
+        flash("Registration Successful!")
+        return redirect(url_for(""))
+
+    return render_template("register.html")
+
+
