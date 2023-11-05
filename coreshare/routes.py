@@ -9,3 +9,11 @@ from coreshare.model import User
 def home():
     return render_template("base.html")
 
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Renders register page and allows user to register"""
+    if request.method == "POST":
+        # checks if username already exists
+        existing_user = User.query.filter(
+            User.user_name == request.form.get("user_name").lower()).all()
