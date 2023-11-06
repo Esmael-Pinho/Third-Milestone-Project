@@ -7,39 +7,70 @@
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading text-muted"></h3>
         </div>
-        <form id="contactForm">
-            <div class="row align-items-stretch mb-5">
+        <div class="thank-you-container">
+            <div class="row justify-content-md-center mess-1">
+                <div class="card text-bg-primary col-sm-12 col-md-7 col-lg-4">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="thank-you-container" aria-label="Close"></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="thank-you-message">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="contact-form" onsubmit="return sendEmail(this);">
+            <div id="contact-container" class="row align-items-stretch mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
                         <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder=" Your Name " data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <input for="name" class="form-control" id="name" name="name" type="text" placeholder=" Your Name " required>
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder=" Your Email " data-sb-validations="required,email" />
-                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        <input for="email" class="form-control" id="email" name="email" type="email" placeholder=" Your Email " required>
                     </div>
                     <div class="form-group mb-md-0">
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder=" Your Phone " data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        <input class="form-control" id="phone" type="tel" placeholder=" Your Phone " required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="message" placeholder=" Your Message *" data-sb-validations="required"></textarea>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        <textarea for="message" class="form-control" id="message" name="message" placeholder=" Your Message *" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="text-center contact-btn">
-                <button class="btn btn-warning btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
+                <input type="submit" id="contact-btn" class="btn btn-warning btn-xl text-uppercase" aria-label="Send message">
             </div>
         </form>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 </section>
 
 

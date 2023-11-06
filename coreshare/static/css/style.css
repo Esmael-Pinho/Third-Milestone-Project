@@ -169,7 +169,7 @@ header p{
   padding-top: 4.5rem;
   padding-bottom: 2.9rem;
   text-align: center;
-  background-image: url(../images/intro-img-3.jpg);
+  background-image: url(../images/intro-img-1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   filter: brightness(93%); 
@@ -273,7 +273,7 @@ header p{
 }
 
 #contact {
-  background-image: url(../images/intro-img-1.jpg);
+  background-image: url(../images/contact.jpg);
   height: 100vh;
 }
 
