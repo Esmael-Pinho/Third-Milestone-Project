@@ -59,8 +59,11 @@
         <div>
             <div class="container">
                 {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-                <div class="row flashes">
+                <div class="row flashes alert-info" role="alert">
                     <p>{{ message }}</p>
+                    <button type="button" class="close" data-dismiss="flashes">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 {% endfor %} {% endif %} {% endwith %}
             </div>
