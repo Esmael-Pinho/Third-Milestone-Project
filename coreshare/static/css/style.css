@@ -79,6 +79,10 @@ body {
     }
 }
 
+.alert {
+  z-index: 9999;
+}
+
 
 /* Intro */
 

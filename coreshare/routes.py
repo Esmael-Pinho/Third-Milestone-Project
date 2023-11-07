@@ -20,7 +20,7 @@ def register():
 
         if existing_user:
             flash(
-                "Username already exists. Please try a different username")
+                "Username already exists. Please try a different username", category="error")
             return redirect(url_for("register"))
 
         user = User(
@@ -36,7 +36,7 @@ def register():
 
         # put the new user into 'session' mode / active
         session["user"] = request.form.get("user_name").lower()
-        flash("Registration Successful!")
+        flash("Registration Successful!", category="success")
         return redirect(url_for("login"))
 
     return render_template("register.html")
@@ -55,18 +55,17 @@ def login():
             if check_password_hash(
                     existing_user[0].password, request.form.get("password")):
                 session["user"] = request.form.get("user_name").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("user_name")))
+                # flash("Welcome, {}".format(
+                #     request.form.get("user_name")))
                 return redirect(url_for(
                     "index"))
             else:
                 # not password match
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                flash("Incorrect Password, please try again.", category="error")
 
         else:
             # username doesn't exist
-            flash("Username doesn't exist, please try signing up first")
+            flash("Username doesn't exist, try register first.", category="error")
             return redirect(url_for("register"))
 
     return render_template("login.html")
@@ -75,7 +74,7 @@ def login():
 @app.route("/logout")
 def logout():
     """remove users from session """
-    flash("You have been logged out.")
+    flash("You have been logged out.", category="success")
     session.pop("user")
     return redirect(url_for("login"))
 
@@ -87,5 +86,5 @@ def contact():
 
 
 @app.route("/index")
-def home():
+def index():
     return render_template("index.html")

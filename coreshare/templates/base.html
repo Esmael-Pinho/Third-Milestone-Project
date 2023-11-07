@@ -43,10 +43,10 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         {% if session.user %}
-                            <li class="nav-item"><a class="nav-link" href="">Home <i class="fas fa-home"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home <i class="fas fa-home"></i></a></li>
                             <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
@@ -56,18 +56,21 @@
             </div>
         </nav>
 
-        <div>
-            <div class="container">
-                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-                <div class="row flashes alert-info" role="alert">
-                    <p>{{ message }}</p>
-                    <button type="button" class="close" data-dismiss="flashes">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                {% endfor %} {% endif %} {% endwith %}
+        
+        {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %} 
+            {% for category, message in messages %}
+            {% if category == "error" %}
+            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <div>{{ message }}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="alert" aria-label="Close"></button>
             </div>
-        </div>
+            {% else %}
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                <div>{{ message }}</div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %} {% endfor %} {% endif %} {% endwith %}
         
         <main>
             {% block content %}
@@ -93,21 +96,21 @@
                         <span class="bold yellow web-name">CoreShare</span> <span> &copy; All rights reserved</span>
                     </div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i>
+                        <a class="btn btn-dark btn-social mx-2" href="https://en-gb.facebook.com/" aria-label="Twitter"><i class="fab fa-twitter"></i>
                             <span class="sr-only">Twitter Link</span>
                         </a>
-                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i>
+                        <a class="btn btn-dark btn-social mx-2" href="https://en-gb.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i>
                             <span class="sr-only">Facebook Link</span>
                         </a>
-                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>
+                        <a class="btn btn-dark btn-social mx-2" href="https://uk.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>
                             <span class="sr-only">LinkedIn Link</span>
                         </a>
-                        <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i>
                             <span class="sr-only">InstagramLink</span>
                         </a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">
+                        <a class="link-dark text-decoration-none me-3" href="{{ url_for('contact') }}">
                             <span class="bold footer-cont">Contact Us</span>
                         </a>
                     </div>

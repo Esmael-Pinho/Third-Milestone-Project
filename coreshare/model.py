@@ -24,6 +24,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_name = db.Column(db.String(35), unique=True, nullable=False)
     events = db.relationship("Events")
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -53,6 +54,7 @@ class Events(db.Model):
     events_description = db.Column(db.Text, nullable=False)
     from_date = db.Column(db.Date, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     
 
     def __repr__(self):
