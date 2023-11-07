@@ -2,12 +2,12 @@ import datetime
 from flask import flash, render_template, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
-from coreshare.model import User
+from coreshare.model import User, Post, Notes, Events
 
 
 @app.route("/")
-def home():
-    return render_template("contact.html")
+def intro():
+    return render_template("base.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -70,3 +70,22 @@ def login():
             return redirect(url_for("register"))
 
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    """remove users from session """
+    flash("You have been logged out.")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
+
+@app.route("/index")
+def home():
+    return render_template("index.html")
