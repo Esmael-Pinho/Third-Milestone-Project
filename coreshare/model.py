@@ -8,6 +8,8 @@ class User(db.Model):
     user_first_name = db.Column(db.String(80), nullable=False)
     user_last_name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(260), nullable=False)
+    posts = db.relationship(
+        "Post", "Events", "Notes")
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -20,6 +22,7 @@ class Post(db.Model):
     # schema for the Posts model
     id = db.Column(db.Integer, primary_key=True)
     post_name = db.Column(db.String(35), unique=True, nullable=False)
+    events = db.relationship("Events")
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -33,7 +36,7 @@ class Notes(db.Model):
     notes_description = db.Column(db.Text, nullable=False)
     is_urgent = db.Column(db.Boolean, default=False, nullable=False)
     due_date = db.Column(db.Date, nullable=False)
-    
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -42,12 +45,13 @@ class Notes(db.Model):
         )
 
 
-class Eventes(db.Model):
+class Events(db.Model):
     # schema for the Notes model
     id = db.Column(db.Integer, primary_key=True)
     events_name = db.Column(db.String(50), unique=True, nullable=False)
     events_description = db.Column(db.Text, nullable=False)
     from_date = db.Column(db.Date, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
 
     def __repr__(self):
