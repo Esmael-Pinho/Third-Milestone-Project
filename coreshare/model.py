@@ -8,8 +8,9 @@ class User(db.Model):
     user_first_name = db.Column(db.String(80), nullable=False)
     user_last_name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(260), nullable=False)
-    posts = db.relationship(
-        "Post", "Events", "Notes")
+    posts = db.relationship("Post")
+    notes = db.relationship("Notes")
+    events = db.relationship("Events")
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
