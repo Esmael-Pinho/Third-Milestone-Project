@@ -24,6 +24,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_name = db.Column(db.String(35), unique=True, nullable=False)
     events = db.relationship("Events")
+    post_description = db.Column(db.Text, nullable=False)
+    post_date = db.Column(db.Date, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):

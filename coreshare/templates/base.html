@@ -44,7 +44,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         {% if session.user %}
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home <i class="fas fa-home"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Profile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}">My Profile</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}

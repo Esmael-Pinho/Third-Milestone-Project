@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="main addMain">
+
+
+        <div class="row justify-content-md-center add">
+            <h1 class="text-center">Add Post</h1>
+
+            <form class="col-sm-11 col-md-8 col-lg-6" method="POST" action="{{ url_for('add_post') }}">
+                <ul class="addBorder">
+                    <!-- Post Name -->
+                    <li class="list-group-item">
+                        <i class="fas fa-pencil-alt"></i> <label for="post_name"> Post Name</label>
+                        <input for="post_name" class="form-control" id="post_name" name="post_name" type="text" placeholder=" Post name " required>
+                    </li>
+                    <!-- Post Description -->
+                    <li class="list-group-item form-group-textarea">
+                        <i class="fas fa-align-left"></i> <label for="post_description"> Description</label>
+                        <textarea for="post_description" class="form-control" id="post_description" name="post_description" placeholder=" Your post description *" required></textarea>
+                    </li>
+                    <!-- Image URL -->
+                    <li class="list-group-item">
+                        <i class="fa-regular fa-image"></i> <label for="image_url"> Image</label>
+                        <input for="image_url" id="image_url" name="image_url" type="text" class="form-control" placeholder=" Place your image URL here *">
+                    </li>
+                    <!-- Select from Post Category-->
+                    <li class="list-group-item">
+                        <i class="fas fa-folder-open"></i> <label for="category"> Category</label>
+                        <select id="category" name="category" class="form-select" aria-label=" Category Select options" required>
+                            <option disabled selected>Choose Category</option>
+                            <option value="1">Food</option>
+                            <option value="2">Presents</option>
+                            <option value="3">Christmas Tree</option>
+                            <option value="4">Christmas Stories</option>
+                            <option value="5">Christmas Jokes</option>
+                            <option value="6">New Years Wishes</option>
+                        </select>
+                    </li>
+                </ul>
+            
+                <!-- Submi a Post -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a type="submit" class="btn btn-warning btn-xl text-uppercase submit-btn">Add Post <i class="fas fa-plus-square right"></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

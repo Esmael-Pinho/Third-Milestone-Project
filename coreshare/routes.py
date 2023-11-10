@@ -88,3 +88,28 @@ def contact():
 @app.route("/index")
 def index():
     return render_template("index.html")
+
+
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
+
+
+@app.route("/add_post", methods=["GET", "POST"])
+def add_post():
+    if request.method == "POST":
+        
+        post_name=request.form.get("post_name"),
+        post_description=request.form.get("post_description"),
+        post_date=request.form.get("post_date"),
+        user_id=request.form.get("user_id")
+
+        post = {
+            "image_url": request.form.get("image_url"),
+            "timestamp": datetime.datetime.utcnow()
+        }
+        
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for("index"))
+    return render_template("add_post.html")

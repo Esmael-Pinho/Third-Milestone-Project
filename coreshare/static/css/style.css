@@ -122,7 +122,7 @@ header p{
   color: var(--white);
   cursor: pointer;
 }
-.reg-link:hover {
+.reg-link:hover, .submit-btn:hover i {
   color: var(--yellow);
 }
 .white {
@@ -147,7 +147,7 @@ header p{
   font-weight: bold;
 }
 
-.log-btn:hover, .reg-btn:hover {
+.log-btn:hover, .reg-btn:hover, #contact-btn:hover {
   background-color: var(--white);
   color: var(--blue);
 }
@@ -299,20 +299,49 @@ header p{
 
 #contact {
   background-image: url(../images/contact.jpg);
-  height: 100vh;
+  height: 88vh;
+  padding-top: 2rem;
 }
 
 #contact .container {
-  padding-top: 6rem;
+  padding-top: 5rem;
 }
 .form-group textarea {
   height: 128px;
 }
 .cont-us {
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
 }
 .contact-btn {
-  margin-top: 4rem;
+  margin-top: 3rem;
+}
+.main {
+  height: 88vh;
+  overflow-x: hidden;
+}
+.profile-container {
+  padding-top: 5rem;
+}
+.profile-container .welcome-msg {
+  margin-bottom: 1rem;
+}
+.submit-btn {
+  background-color: var(--yellow);
+}
+.submit-btn:hover {
+  background-color: var(--white);
+}
+.add {
+  margin-top: 5rem;
+}
+.add .list-group-item {
+  margin: 1.5rem;
+}
+.add i, .add label {
+  font-size: 24px;
+}
+.addBorder {
+  border: 2px solid var(--light-blue);
 }
 
 
