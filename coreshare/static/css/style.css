@@ -125,6 +125,9 @@ header p{
 .reg-link:hover {
   color: var(--yellow);
 }
+.white {
+  color: var(--white);
+}
 
 /* Footer */
 .footer {
@@ -200,7 +203,7 @@ header p{
 
 .black {
   color: #000;
-  font-weight: bolder;
+  font-weight: 800;
 }
 .black a {
   color: #fff;
@@ -223,8 +226,9 @@ header p{
 }
 
 .index-cont {
-  height: 100vh;
   overflow-x: hidden;
+  background-image: url(../images/background-test-5.webp);
+  background-size: cover;
 }
 .dash-section {
   padding-top: 8rem;
@@ -232,6 +236,17 @@ header p{
 .welcome-msg {
   margin-top: .5rem;
   margin-bottom: 2rem;
+  border: none;
+}
+.welcome-msg .card-body {
+  border: 4px solid var(--blue);
+  background-color: #9e9c9c4e;
+}
+.welcome-msg .card-title {
+  font-size: 30px;
+}
+.welcome-msg .card-text {
+  font-size: 20px;
 }
 
 #dashboard .dashboard-item {
@@ -257,7 +272,7 @@ header p{
 }
 #dashboard .dashboard-item .dashboard-link .dashboard-hover .dashboard-hover-content {
   font-size: 1.25rem;
-  color: white;
+  color: var(--white);
 }
 #dashboard .dashboard-item .dashboard-link:hover .dashboard-hover {
   opacity: 1;
@@ -268,8 +283,14 @@ header p{
 }
 #dashboard .dashboard-item .dashboard-caption .dashboard-caption-heading {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 0;
+  color: var(--white);
+  background-color: #00000010;
+  border-radius: 15px;
+}
+.img-fluid, .dashboard-hover {
+  border-radius: 15px;
 }
 
 .welcome-msg {
