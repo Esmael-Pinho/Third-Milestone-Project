@@ -1,4 +1,5 @@
 from coreshare import db
+from datetime import datetime
 
 
 class User(db.Model):
@@ -8,9 +9,8 @@ class User(db.Model):
     user_first_name = db.Column(db.String(80), nullable=False)
     user_last_name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(260), nullable=False)
-    posts = db.relationship("Post")
-    notes = db.relationship("Notes")
-    events = db.relationship("Events")
+    posts = db.relationship('Post', backref='author', lazy=True)
+    
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -22,45 +22,18 @@ class User(db.Model):
 class Post(db.Model):
     # schema for the Posts model
     id = db.Column(db.Integer, primary_key=True)
-    post_name = db.Column(db.String(35), unique=True, nullable=False)
-    events = db.relationship("Events")
+    post_name = db.Column(db.String(80), nullable=False)
     post_description = db.Column(db.Text, nullable=False)
-    post_date = db.Column(db.Date, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    image_url = db.Column(db.String(200), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('user_posts', lazy=True))
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
-        return self.post_name
-
-
-class Notes(db.Model):
-    # schema for the Notes model
-    id = db.Column(db.Integer, primary_key=True)
-    notes_name = db.Column(db.String(50), unique=True, nullable=False)
-    notes_description = db.Column(db.Text, nullable=False)
-    is_urgent = db.Column(db.Boolean, default=False, nullable=False)
-    due_date = db.Column(db.Date, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    def __repr__(self):
-        # __repr__ to represent itself in the form of a string
-        return "#{0} - Notes: {1} | Urgent: {2}".format(
-            self.id, self.notes_name, self.is_urgent
+        return "#{0} - Post: {1} | Description: {2} | Image: {3}".format(
+            self.id, self.post_name, self.post_description, self.image_url
         )
 
 
-class Events(db.Model):
-    # schema for the Notes model
-    id = db.Column(db.Integer, primary_key=True)
-    events_name = db.Column(db.String(50), unique=True, nullable=False)
-    events_description = db.Column(db.Text, nullable=False)
-    from_date = db.Column(db.Date, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
-    
 
-    def __repr__(self):
-        # __repr__ to represent itself in the form of a string
-        return "#{0} - Events: {1} | Date: {2}".format(
-            self.id, self.events_name, self.from_date
-        )
