@@ -17,7 +17,7 @@ class User(db.Model):
     user_last_name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(260), nullable=False)
     # Establish a one-to-many relationship between User and Post
-    user_posts = db.relationship('Post', backref='author', lazy=True)
+    user_posts = db.relationship('Post', back_populates='author', lazy=True)
     
 
     def __repr__(self):
@@ -32,17 +32,19 @@ class Category(db.Model):
     # schema for the Category model
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(25), unique=True, nullable=False)
-    category_image_url = db.Column(db.String(1024), nullable=False)  # add image_url attribute
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # add created_at attribute
-    post = db.relationship(
-        "Post", backref="category", cascade="all, delete", lazy=True)
+    category_image_url = db.Column(db.String(1024), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    
+    # Foreign key to represent ownership
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    owner = db.relationship('User', back_populates='categories')
+    
+    posts = db.relationship("Post", back_populates="category", cascade="all, delete", lazy=True)
 
     def __repr__(self):
-        # __repr__ to represent itself in the form of a string
         return "Name: {0} | Image: {1} | Created At: {2}".format(
             self.category_name, self.category_image_url, self.created_at
         )
-
 
 
 
@@ -58,10 +60,11 @@ class Post(db.Model):
         "category.id", ondelete="CASCADE"), nullable=False)
     # Establish a many-to-one relationship between Post and User
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    posts = db.relationship('User', backref=db.backref('posts', lazy=True))
+    author = db.relationship('User', back_populates='user_posts', lazy=True)
+    category = db.relationship('Category', back_populates='posts', lazy=True)
 
     # Establish a many-to-many relationship between Post and Category
-    categories = db.relationship('Category', secondary='post_category', backref=db.backref('posts', lazy=True))
+    categories = db.relationship('Category', secondary='post_category', backref=db.backref('posts_relation', lazy=True))
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string

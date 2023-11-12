@@ -90,19 +90,21 @@ def categories():
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
-        category = Category(category_name=request.form.get("category_name"))
-        category.category_image_url = request.form.get("category_image_url")
+        category_name = request.form.get("category_name")
+        category_image_url = request.form.get("category_image_url")
 
-        # Validate image URL (you might want to add proper validation)
-        response = requests.get(category_image_url)
-        if response.status_code == 200 and response.headers['Content-Type'].startswith('image'):
-            category = Category(category_name=category_name, category_image_url=category_image_url)
-            db.session.add(category)
-            db.session.commit()
-            flash("Category added successfully!", category="success")
-            return redirect(url_for("categories"))
-        else:
+        # Validate image URL
+        if not is_valid_image_url(category_image_url):
             flash("Invalid image URL, please try again", category="error")
+            return render_template("add_category.html")
+
+        new_category = Category(category_name=category_name, category_image_url=category_image_url)
+
+        db.session.add(new_category)
+        db.session.commit()
+
+        flash("Category added successfully!", category="success")
+        return redirect(url_for("categories"))
 
     return render_template("add_category.html")
 
@@ -117,41 +119,42 @@ def posts():
 @app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
     categories = list(Category.query.order_by(Category.category_name).all())
+
     if request.method == 'POST':
         post_name = request.form.get("post_name")
         post_description = request.form.get("post_description")
         post_image_url = request.form.get("post_image_url")
-        is_new = bool(True if request.form.get("is_new") else False)
 
-        post_image_url = get_post_image_url_somehow()
-
-        post = Post(post_name=post_name, post_image_url=post_image_url)
-        
         # Validate image URL
-        response = requests.get(post_image_url)
-        if response.status_code == 200 and response.headers['Content-Type'].startswith('image'):
-            user_id = session.get("user_id")
-            created_at = datetime.utcnow()
-
-            post = Post(
-                post_name=post_name,
-                post_description=post_description,
-                created_at=created_at,
-                post_image_url=post_image_url,
-                is_new=is_new,
-                user_id=user_id
-            )
-
-            db.session.add(post)
-            db.session.commit()
-
-            flash("Your post has been created!", category="success")
-            return redirect(url_for('posts'))
-        else:
+        if not is_valid_image_url(post_image_url):
             flash("Invalid image URL, please try again", category="error")
+            return render_template('add_post.html', categories=categories)
 
-    else:
-        return render_template('add_post.html', categories=categories)
+        user_id = session.get("user_id")
+        created_at = datetime.utcnow()
+        is_new = bool(request.form.get("is_new"))
+
+        new_post = Post(
+            post_name=post_name,
+            post_description=post_description,
+            created_at=created_at,
+            post_image_url=post_image_url,
+            is_new=is_new,
+            user_id=user_id
+        )
+
+        db.session.add(new_post)
+        db.session.commit()
+
+        flash("Your post has been created!", category="success")
+        return redirect(url_for('posts'))
+
+    return render_template('add_post.html', categories=categories)
+
+
+def is_valid_image_url(url):
+    response = requests.get(url)
+    return response.status_code == 200 and response.headers['Content-Type'].startswith('image')
 
 
 @app.route("/delete_post/<int:post_id>")

@@ -21,21 +21,19 @@
                     </li>
                     <!-- Image URL -->
                     <li class="list-group-item">
-                        <i class="fa-regular fa-image"></i> <label for="image_url"> Image</label>
-                        <input for="image_url" id="image_url" name="image_url" type="text" class="form-control" placeholder=" Place your image URL here *">
+                        <i class="fa-regular fa-image"></i> <label for="post_image_url"> Image</label>
+                        <input for="post_image_url" id="post_image_url" name="post_image_url" type="text" class="form-control" placeholder=" Place your image URL here *">
                     </li>
                     <!-- Select from Post Category-->
                     <li class="list-group-item">
-                        <i class="fas fa-folder-open"></i> <label for="category"> Category</label>
-                        <select id="category" name="category" class="form-select" aria-label=" Category Select options" required>
+                        <i class="fas fa-folder-open"></i>
+                        <select id="category_id" name="category_id" class="form-select" aria-label=" Category Select options" required>
                             <option disabled selected>Choose Category</option>
-                            <option value="1">Food</option>
-                            <option value="2">Presents</option>
-                            <option value="3">Christmas Tree</option>
-                            <option value="4">Christmas Stories</option>
-                            <option value="5">Christmas Jokes</option>
-                            <option value="6">New Years Wishes</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.category_name }}</option>
+                            {% endfor %}
                         </select>
+                        <label for="category_id"> Category</label>
                     </li>
                 </ul>
             

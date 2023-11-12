@@ -8,8 +8,8 @@
                 <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
                     <div class="card-body">
                         <h4 class="card-title black text-center">Welcome {{ session['user'] }} !</h4>
-                        <p class="card-text">Create categories for your best christmas moments
-                            Ex:<small class="text-end"> Photos, Cakes, Stories, Presents</small></p>
+                        <p class="card-text">Create categories for your Christmas moments
+                        </p>
                     </div>
                 </div>
             </div>
@@ -23,27 +23,24 @@
                 <div class="row">
                     {% for category in categories|sort(attribute="created_at") %}
                         <div class="col-lg-4 col-sm-6 mb-4">
-                            <!-- Dashboard posts-->
                             <div class="dashboard-item">
                                 <a class="dashboard-link" data-bs-toggle="modal" href="#">
                                     <div class="dashboard-hover">
                                         <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                        <!-- {% if category.user_posts == session.user %} -->
+                                        {% if category.owner.user_name == session.user %}
                                             <a href="#" class="btn green accent-4">Edit</a>
                                             <a href="#" class="btn red modal-trigger">Delete</a>
-                                        <!-- {% endif %} -->
+                                        {% endif %}
                                     </div>
                                     <img class="img-fluid" src="{{ category.category_image_url }}" alt="{{ category.category_name }} Image">
                                 </a>
                                 <div class="dashboard-caption">
-                                    <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: {{ category.user_posts }}</small></div>
+                                    <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: {{ category.owner.user_name }}</small></div>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
-
                 
             </div>
         </section>

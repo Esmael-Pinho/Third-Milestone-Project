@@ -2,8 +2,6 @@
 {% block content %}
 
     <div class="main addMain">
-
-
         <div class="row justify-content-md-center add">
             <h1 class="text-center">Add Category</h1>
 
@@ -12,16 +10,16 @@
                     <!-- Category Name -->
                     <li class="list-group-item">
                         <i class="fas fa-pencil-alt"></i> <label for="category_name"> Category Name</label>
-                        <input for="category_name" class="form-control" id="category_name" name="category_name" type="text" placeholder=" Your category name here *" required>
+                        <input id="category_name" name="category_name" type="text" class="form-control" placeholder=" Your category name here *" required>
                     </li>
                     <!-- Image URL -->
                     <li class="list-group-item">
-                        <i class="fa-regular fa-image"></i> <label for="image_url"> Image</label>
-                        <input for="category_image_url" id="category_image_url" name="category_image_url" type="text" class="form-control" placeholder=" Image for category here *">
+                        <i class="fa-regular fa-image"></i> <label for="category_image_url"> Image</label>
+                        <input id="category_image_url" name="category_image_url" type="text" class="form-control" placeholder=" Image for category here *">
                     </li>
                 </ul>
             
-                <!-- Submi a Category -->
+                <!-- Submit a Category -->
                 <div class="row">
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-warning btn-xl text-uppercase submit-btn">Add Category <i class="fas fa-plus-square right"></i></button>

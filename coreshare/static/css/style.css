@@ -236,6 +236,7 @@ header p{
   overflow-x: hidden;
   background-image: url(../images/background-test-5.webp);
   background-size: cover;
+  min-height: 88vh;
 }
 .dash-section {
   padding-top: 6.5rem;
