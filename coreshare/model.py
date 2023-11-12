@@ -7,7 +7,12 @@ post_category = db.Table(
     db.Column('post_id', db.Integer, db.ForeignKey('post.id'), primary_key=True),
     db.Column('category_id', db.Integer, db.ForeignKey('category.id'), primary_key=True)
 )
-
+# Association Table for Category and User
+user_category_association = db.Table(
+    'user_category_association',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('category_id', db.Integer, db.ForeignKey('category.id'))
+)
 
 class User(db.Model):
     # User model
@@ -16,8 +21,13 @@ class User(db.Model):
     user_first_name = db.Column(db.String(80), nullable=False)
     user_last_name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(260), nullable=False)
+    categories = db.relationship('Category', back_populates='owner', lazy=True)
+
     # Establish a one-to-many relationship between User and Post
-    user_posts = db.relationship('Post', back_populates='author', lazy=True)
+    user_posts = db.relationship("Post", back_populates="author", lazy=True)
+    # Establish a many-to-many relationship between User and Category
+    user_categories = db.relationship("Category", secondary=user_category_association, back_populates="users", lazy=True)
+
     
 
     def __repr__(self):
@@ -36,9 +46,12 @@ class Category(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     
     # Foreign key to represent ownership
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    owner = db.relationship('User', back_populates='categories')
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    owner = db.relationship("User", back_populates="categories")
     
+    # Establish a many-to-many relationship between Category and User
+    users = db.relationship("User", secondary=user_category_association, back_populates="user_categories", lazy=True)
+    # Establish a one-to-many relationship between Category and Post
     posts = db.relationship("Post", back_populates="category", cascade="all, delete", lazy=True)
 
     def __repr__(self):
@@ -59,12 +72,12 @@ class Post(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey(
         "category.id", ondelete="CASCADE"), nullable=False)
     # Establish a many-to-one relationship between Post and User
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    author = db.relationship('User', back_populates='user_posts', lazy=True)
-    category = db.relationship('Category', back_populates='posts', lazy=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    author = db.relationship("User", back_populates="user_posts", lazy=True)
+    category = db.relationship("Category", back_populates="posts", lazy=True)
 
     # Establish a many-to-many relationship between Post and Category
-    categories = db.relationship('Category', secondary='post_category', backref=db.backref('posts_relation', lazy=True))
+    categories = db.relationship("Category", secondary="post_category", backref=db.backref("posts_relation", lazy=True))
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string

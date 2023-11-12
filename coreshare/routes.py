@@ -98,7 +98,14 @@ def add_category():
             flash("Invalid image URL, please try again", category="error")
             return render_template("add_category.html")
 
-        new_category = Category(category_name=category_name, category_image_url=category_image_url)
+        # Get the user_id of the currently logged-in user
+        user_id = User.query.filter_by(user_name=session["user"]).first().id
+
+        new_category = Category(
+            category_name=category_name,
+            category_image_url=category_image_url,
+            user_id=user_id  # Associate the category with the current user
+        )
 
         db.session.add(new_category)
         db.session.commit()
@@ -130,7 +137,9 @@ def add_post():
             flash("Invalid image URL, please try again", category="error")
             return render_template('add_post.html', categories=categories)
 
-        user_id = session.get("user_id")
+         # Get the user_id of the currently logged-in user
+        user_id = User.query.filter_by(user_name=session["user"]).first().id
+
         created_at = datetime.utcnow()
         is_new = bool(request.form.get("is_new"))
 
@@ -140,7 +149,8 @@ def add_post():
             created_at=created_at,
             post_image_url=post_image_url,
             is_new=is_new,
-            user_id=user_id
+            user_id=user_id,  # Associate the post with the current user
+            category_id=category_id
         )
 
         db.session.add(new_post)
@@ -154,6 +164,8 @@ def add_post():
 
 def is_valid_image_url(url):
     response = requests.get(url)
+    print(f"Status Code: {response.status_code}")
+    print(f"Headers: {response.headers}")
     return response.status_code == 200 and response.headers['Content-Type'].startswith('image')
 
 
