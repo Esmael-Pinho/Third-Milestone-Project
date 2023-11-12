@@ -81,6 +81,30 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/categories")
+def categories():
+    categories = list(Category.query.order_by(Category.created_at).all())
+    return render_template("categories.html", categories=categories)
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = Category(category_name=request.form.get("category_name"))
+        category.category_image_url = request.form.get("category_image_url")
+
+        # Validate image URL (you might want to add proper validation)
+        response = requests.get(category_image_url)
+        if response.status_code == 200 and response.headers['Content-Type'].startswith('image'):
+            category = Category(category_name=category_name, category_image_url=category_image_url)
+            db.session.add(category)
+            db.session.commit()
+            flash("Category added successfully!", category="success")
+            return redirect(url_for("categories"))
+        else:
+            flash("Invalid image URL, please try again", category="error")
+
+    return render_template("add_category.html")
 
 
 
@@ -92,26 +116,28 @@ def posts():
 
 @app.route('/add_post', methods=['GET', 'POST'])
 def add_post():
+    categories = list(Category.query.order_by(Category.category_name).all())
     if request.method == 'POST':
         post_name = request.form.get("post_name")
         post_description = request.form.get("post_description")
-        image_url = request.form.get("image_url")
+        post_image_url = request.form.get("post_image_url")
         is_new = bool(True if request.form.get("is_new") else False)
-        
+
+        post_image_url = get_post_image_url_somehow()
+
+        post = Post(post_name=post_name, post_image_url=post_image_url)
         
         # Validate image URL
-        response = requests.get(image_url)
+        response = requests.get(post_image_url)
         if response.status_code == 200 and response.headers['Content-Type'].startswith('image'):
             user_id = session.get("user_id")
-
-            # Get the current timestamp
             created_at = datetime.utcnow()
 
             post = Post(
                 post_name=post_name,
                 post_description=post_description,
                 created_at=created_at,
-                image_url=image_url,
+                post_image_url=post_image_url,
                 is_new=is_new,
                 user_id=user_id
             )
@@ -123,7 +149,6 @@ def add_post():
             return redirect(url_for('posts'))
         else:
             flash("Invalid image URL, please try again", category="error")
-            return render_template('add_post.html')
 
     else:
         return render_template('add_post.html', categories=categories)

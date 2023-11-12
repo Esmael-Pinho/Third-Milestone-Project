@@ -40,11 +40,10 @@
                           <!--Image URL-->
                             <div class="row">
                                 <div class="input-field col-12">
-                                    <input id="image_url" name="image_url" type="text" class="form-control" placeholder="Image URL">
-                                    <label for="image_url">Image URL</label>
+                                    <img class="img-fluid" src="{{ post.post_image_url }}" alt="{{ post.post_name }} Image">
                                 </div>
                             </div>
-                          {% if post.owner == session.user %}
+                          {% if post.user_posts == session.user %}
                             <p>
                                 <a href="#" class="btn btn-warning btn-lg text-uppercase">Edit</a>
                                 <a href="#" class="btn btn-danger btn-lg text-uppercase modal-trigger">Delete</a>

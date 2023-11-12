@@ -41,6 +41,10 @@ body {
   font-family: "Ubuntu", 'Oswald', monospace;
 }
 
+#pagesMain {
+  min-height: 88vh;
+}
+
 
 /* Navbar */
 
@@ -193,6 +197,9 @@ header p{
   margin: 1.5rem auto 3rem auto;
   font-family: "Ubuntu", 'Oswald', monospace;
 }
+.cat {
+  margin-bottom: 0!important;
+}
 .mess-2 {
   margin-top: 1rem;
 }
@@ -231,7 +238,7 @@ header p{
   background-size: cover;
 }
 .dash-section {
-  padding-top: 8rem;
+  padding-top: 6.5rem;
 }
 .welcome-msg {
   margin-top: .5rem;
@@ -291,6 +298,9 @@ header p{
 }
 .img-fluid, .dashboard-hover {
   border-radius: 15px;
+}
+.dashboard {
+  margin-top: 1.5rem;
 }
 
 .welcome-msg {
