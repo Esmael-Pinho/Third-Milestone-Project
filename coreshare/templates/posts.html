@@ -3,7 +3,7 @@
 
 <div class="main">
     <div class="container profile-container">
-        <h2 class="text-center">{{ session['user'] }}'s profile</h2>
+        <h2 class="text-center">{{ session['user'] }}'s posts</h2>
         <div class="row justify-content-md-center ">
             <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
                 <div class="card-body">
@@ -19,15 +19,17 @@
         
         
         <div class="row">
-            {% for post in posts %}
+            {% for post in posts|sort(attribute="created_at") %}
             <div class="col-sm-12 col-md-9 col-lg-6">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                       <h3 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <strong>{{ post_name }}</strong> : {{ created_at }}  {% if created_at[0] %}
-                            <i class="fas fa-exclamation-circle"></i>
-                        {% endif %} Testing
+                            <i class="fas fa-caret-down"></i>
+                            <strong>{{ post.post_name }}</strong> : {{ post.created_at }}
+                            {% if post.is_new == True %}
+                                <i class="fas fa-exclamation-circle"></i>
+                            {% endif %}
                         </button>
                       </h3>
                       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -35,11 +37,17 @@
                             Testing
                           <strong>{{ category.name }}</strong>
                           <p>{{ post.post_description }}</p>
-                          <img src="{{ image_url }}">
-                          {% if post.user.user_name == session.user %}
+                          <!--Image URL-->
+                            <div class="row">
+                                <div class="input-field col-12">
+                                    <input id="image_url" name="image_url" type="text" class="form-control" placeholder="Image URL">
+                                    <label for="image_url">Image URL</label>
+                                </div>
+                            </div>
+                          {% if post.owner == session.user %}
                             <p>
-                                <a href="#" class="btn btn-warning btn-xl text-uppercase">Edit</a>
-                                <a href="#" class="btn btn-danger btn-xl text-uppercase modal-trigger">Delete</a>
+                                <a href="#" class="btn btn-warning btn-lg text-uppercase">Edit</a>
+                                <a href="#" class="btn btn-danger btn-lg text-uppercase modal-trigger">Delete</a>
                                 Testing
                             </p>
                             {% endif %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="main addMain">
+
+
+        <div class="row justify-content-md-center add">
+            <h1 class="text-center">Add Post</h1>
+
+            <form class="col-sm-11 col-md-8 col-lg-6" method="POST" action="{{ url_for('add_category') }}">
+                <ul class="addBorder">
+                    <!-- Category Name -->
+                    <li class="list-group-item">
+                        <i class="fas fa-pencil-alt"></i> <label for="category_name"> Category Name</label>
+                        <input for="category_name" class="form-control" id="category_name" name="category_name" type="text" placeholder=" Your category name here *" required>
+                    </li>
+                </ul>
+            
+                <!-- Submi a Category -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-warning btn-xl text-uppercase submit-btn">Add Category <i class="fas fa-plus-square right"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

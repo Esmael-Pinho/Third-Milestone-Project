@@ -2,7 +2,7 @@ import datetime
 from flask import flash, render_template, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
-from coreshare.model import User, Post
+from coreshare.model import User, Category, Post
 import requests
 
 
@@ -37,7 +37,7 @@ def register():
         # put the new user into 'session' mode / active
         session["user"] = request.form.get("user_name").lower()
         flash("Registration Successful!", category="success")
-        return redirect(url_for("index"))
+        return redirect(url_for("categories"))
 
     return render_template("register.html")
 
@@ -55,7 +55,7 @@ def login():
             if check_password_hash(
                     existing_user[0].password, request.form.get("password")):
                 session["user"] = request.form.get("user_name").lower()
-                return redirect(url_for("index"))
+                return redirect(url_for("categories"))
             else:
                 # not password match
                 flash("Incorrect Password, please try again.", category="error")
@@ -82,15 +82,12 @@ def contact():
 
 
 
-@app.route("/index")
-def index():
-    return render_template("index.html")
 
 
-@app.route("/profile")
-def profile():
-    profile = list(Post.query.order_by(Post.post_name).all())
-    return render_template("profile.html", profile=profile)
+@app.route("/posts")
+def posts():
+    posts = list(Post.query.order_by(Post.id).all())
+    return render_template("posts.html", posts=posts)
 
 
 @app.route('/add_post', methods=['GET', 'POST'])
@@ -99,6 +96,7 @@ def add_post():
         post_name = request.form.get("post_name")
         post_description = request.form.get("post_description")
         image_url = request.form.get("image_url")
+        is_new = bool(True if request.form.get("is_new") else False)
         
         
         # Validate image URL
@@ -114,6 +112,7 @@ def add_post():
                 post_description=post_description,
                 created_at=created_at,
                 image_url=image_url,
+                is_new=is_new,
                 user_id=user_id
             )
 
@@ -121,12 +120,13 @@ def add_post():
             db.session.commit()
 
             flash("Your post has been created!", category="success")
-            return redirect(url_for('index'))
+            return redirect(url_for('posts'))
         else:
-            return render_template('add_post.html', error='Invalid image URL')
+            flash("Invalid image URL, please try again", category="error")
+            return render_template('add_post.html')
 
     else:
-        return render_template('add_post.html')
+        return render_template('add_post.html', categories=categories)
 
 
 @app.route("/delete_post/<int:post_id>")
@@ -134,6 +134,6 @@ def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     db.session.delete(post)
     db.session.commit()
-    return redirect(url_for("profile"))
+    return redirect(url_for("posts"))
 
 
