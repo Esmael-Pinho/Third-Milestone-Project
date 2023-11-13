@@ -3,7 +3,7 @@
 
     <div class="index-cont">
 
-        <section class="dash-section " id="dashboard">
+        <section class="dash-section " id="category">
             <div class="row justify-content-md-center mess-1 cat">
                 <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
                     <div class="card-body">
@@ -19,19 +19,19 @@
                 </div>
             </div>
 
-            <div class="dashboard">
+            <div class="category">
                 <div class="row">
                     {% for category in categories|sort(attribute="created_at") %}
                         <div class="col-lg-4 col-sm-6 mb-4">
-                            <div class="dashboard-item">
-                                <a class="dashboard-link" data-bs-toggle="modal" href="#">
-                                    <div class="dashboard-hover">
-                                        <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i>
+                            <div class="category-item">
+                                <a class="category-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                    <div class="category-hover">
+                                        <div class="category-hover-content"><i class="fas fa-plus fa-3x"></i>
                                         </div>
                                     </div>
                                     <img class="img-fluid object-fit-contain" src="{{ category.category_image_url }}" alt="{{ category.category_name }} Image">
                                 </a>
-                                <div class="dashboard-caption">
+                                <div class="category-caption">
                                     {% if category.owner.user_name == session.user %}
                                         <div class="accordion" id="accordionCategory">
                                             <div class="accordion-item">
@@ -56,7 +56,7 @@
                                         
                                         <!-- Modal -->
                                         <div class="modal fade" id="modal-{{ category.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5 text-uppercase black" id="deleteModal">Are you sure you want<br>to delete this Category?</h1>
@@ -75,8 +75,59 @@
                                         </div>
 
                                     {% else %}
-                                        <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
+                                        <div class="category-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
                                     {% endif %}
+                                </div>
+
+                                <!-- Modals to access posts, by category-->
+                                <div class="category-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm modal-lg modal-xl">
+                                        <div class="modal-content">
+                                            <h1 class="text-center">{{ category.category_name }}</h1>
+                                            <div class="close-modal" data-bs-dismiss="modal"><img src="../static/images/close-icon.svg" alt="Close modal" /></div>
+                                            <div class="container">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-lg-11">
+                                                        <div class="modal-body">
+                                                            <!-- Post details-->
+                                                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                                
+                                                                <div class="col">
+                                                                  <div class="card h-100">
+                                                                    <img src="../static/images/Christmas-jokes.jpg" class="card-img-top" alt="...">
+                                                                    <div class="card-body">
+                                                                      <h5 class="card-title"></h5>
+                                                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                                                    </div>
+                                                                    <div class="card-footer">
+                                                                      <small class="text-body-secondary">
+                                                                        <ul class="list-inline">
+                                                                            <li>
+                                                                                <strong>By:</strong>
+                                                                                {{ category.owner.user_name }}
+                                                                            </li>
+                                                                            <li>
+                                                                                <strong>At:</strong>
+                                                                                {{ category.category_created_at }}
+                                                                            </li>
+                                                                        </ul>
+                                                                      </small>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-warning btn-xl text-uppercase close-posts-modal" data-bs-dismiss="modal" type="button">
+                                                                <i class="fas fa-xmark me-1"></i>
+                                                                Close
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
