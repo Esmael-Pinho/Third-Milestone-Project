@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="main addMain">
+        <div class="row justify-content-md-center add">
+            <h1 class="text-center">Edit Category</h1>
+
+            <form class="col-sm-11 col-md-8 col-lg-6" method="POST" action="{{ url_for('edit_category', category_id=category.id) }}">
+                <ul class="addBorder">
+                    <!-- Category Name -->
+                    <li class="list-group-item">
+                        <i class="fas fa-pencil-alt"></i> <label for="category_name"> Category Name</label>
+                        <input id="category_name" name="category_name" value="{{ category.category_name }}" type="text" class="form-control" placeholder=" Your category name here *" required>
+                    </li>
+                    <!-- Image URL -->
+                    <li class="list-group-item">
+                        <i class="fa-regular fa-image"></i> <label for="category_image_url"> Image</label>
+                        <input id="category_image_url" name="category_image_url" value="{{ category.category_image_url }}" type="text" class="form-control" placeholder=" Image for category here *" required>
+                    </li>
+                </ul>
+            
+                <!-- Submit a Category -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-warning btn-xl text-uppercase">Edit Category <i class="fas fa-edit right"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
