@@ -26,18 +26,33 @@
                             <div class="dashboard-item">
                                 <a class="dashboard-link" data-bs-toggle="modal" href="#">
                                     <div class="dashboard-hover">
-                                        <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                            {% if category.owner.user_name == session.user %}
-                                                <div class="card-img-overlay">
-                                                    <a href="#" class="btn green">Edit</a>
-                                                    <a href="#" class="btn red modal-trigger">Delete</a>
-                                                </div>
-                                            {% endif %}
+                                        <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i>
+                                        </div>
                                     </div>
-                                    <img class="img-fluid" src="{{ category.category_image_url }}" alt="{{ category.category_name }} Image">
+                                    <img class="img-fluid object-fit-contain" src="{{ category.category_image_url }}" alt="{{ category.category_name }} Image">
                                 </a>
                                 <div class="dashboard-caption">
-                                    <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
+                                    {% if category.owner.user_name == session.user %}
+                                        <div class="accordion" id="accordionCategory">
+                                            <div class="accordion-item">
+                                            <h2 class="accordion-header text-center">
+                                                <button class="accordion-button collapsed yellow" type="button" data-bs-toggle="collapse" data-bs-target="#{{ category.id }}" aria-expanded="false" aria-controls="{{ category.id }}">
+                                                    {{ category.category_name }}
+                                                </button>
+                                            </h2>
+                                            <div id="{{ category.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCategory">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        <a href="#" class="btn btn-warning btn-sm text-uppercase submit-btn">Edit</a>
+                                                        <a href="#" class="btn btn-warning btn-sm text-uppercase submit-btn modal-trigger">Delete</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
