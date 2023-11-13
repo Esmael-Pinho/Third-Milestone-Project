@@ -27,15 +27,17 @@
                                 <a class="dashboard-link" data-bs-toggle="modal" href="#">
                                     <div class="dashboard-hover">
                                         <div class="dashboard-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                        {% if category.owner.user_name == session.user %}
-                                            <a href="#" class="btn green accent-4">Edit</a>
-                                            <a href="#" class="btn red modal-trigger">Delete</a>
-                                        {% endif %}
+                                            {% if category.owner.user_name == session.user %}
+                                                <div class="card-img-overlay">
+                                                    <a href="#" class="btn green">Edit</a>
+                                                    <a href="#" class="btn red modal-trigger">Delete</a>
+                                                </div>
+                                            {% endif %}
                                     </div>
                                     <img class="img-fluid" src="{{ category.category_image_url }}" alt="{{ category.category_name }} Image">
                                 </a>
                                 <div class="dashboard-caption">
-                                    <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: {{ category.owner.user_name }}</small></div>
+                                    <div class="dashboard-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
                                 </div>
                             </div>
                         </div>
