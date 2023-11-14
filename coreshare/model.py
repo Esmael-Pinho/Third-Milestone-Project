@@ -79,6 +79,9 @@ class Post(db.Model):
     # Establish a many-to-many relationship between Post and Category
     categories = db.relationship("Category", secondary="post_category", backref=db.backref("posts_relation", lazy=True))
 
+     # Establish a many-to-one relationship between Post and Category
+    category = db.relationship("Category", back_populates="posts", lazy=True)
+
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
         return "#{0} - Post: {1} | Description: {2} | Image: {3}".format(

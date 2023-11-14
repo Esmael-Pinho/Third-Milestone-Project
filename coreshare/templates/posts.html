@@ -18,24 +18,23 @@
         </div>
         
         <div class="container">
-            <div id="post-container" class="row">
-                {% for post in posts|sort(attribute="created_at") %}
-                <div class="col-sm-12 col-md-9 col-lg-6">
-                    <div class="accordion" id="accordionPost">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ post.id }}" aria-expanded="true" aria-controls="collapse{{ post.id }}">
+            <div id="post-container" class="row justify-content-center">
+                {% for post in posts %}
+                    <div class="col-sm-12 col-md-10 col-lg-8">
+                        <div class="accordion" id="accordionPost{{ post.id }}">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePost{{ post.id }}" aria-expanded="true" aria-controls="collapsePost{{ post.id }}">
                                         {% if loop.last %}
-                                            <i class="fas fa-exclamation-circle"></i>
+                                            <i class="fas fa-exclamation-circle"></i> 
                                         {% endif %}
-                                        <strong>{{ post.post_name }}</strong> : <small> Created at: {{ post.created_at }}</small> 
+                                        <strong> {{ post.post_name }}</strong>-  <small> Created at: {{ post.created_at.strftime('%Y-%m-%d') }}</small> 
                                     </button>
-                            </h3>
-                            <div id="collapse{{ post.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionPost">
-                                <div class="accordion-body">
-                                    <h4>{{ post.post_description }}</h4>
-                                    {% if post.user_posts == session.user %}
-                                        <div class="row">
+                                </h3>
+                                <div id="collapsePost{{ post.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionPost{{ post.id }}">
+                                    <div class="accordion-body">
+                                        <h5>{{ post.post_description }}</h5>
+                                        <div class="row justify-content-center text-center">
                                             <div class="col">
                                                 <a href="{{ url_for('edit_post', post_id=post.id) }}" class="btn btn-success btn-sm text-uppercase">Edit</a>
                                                 <button type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ post.id }}">
@@ -43,42 +42,33 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    {% endif %}
-                                    
-                                    <div class="row">
-                                        <div class="input-field col-12">
-                                            <img class="img-fluid" src="{{ post.post_image_url }}" alt="{{ post.post_name }} Image">
-                                        </div>
+                                        <h6 class="black for-category">For Category: <smal class="green"> {{ post.category.category_name }}</smal></h6>
                                     </div>
-                                    <h6 class="black">For Category: {{ category_name }} </h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-    
-                <!-- Modal -->
-                <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-uppercase black" id="deleteModal">Are you sure you want<br>to delete this Post?</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h5 class="black">This action cannot be undone.</h5>
-                                <p class="text-uppercase black"><span class="bg-warning text-wrap">warning:</span> this will delete all posts with name: {{ post.post_name }} !</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-success btn-sm text-uppercase">Yes - Delete</a>
-                                <button type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-dismiss="modal">No - Cancel</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-uppercase black" id="deleteModal">Are you sure you want<br>to delete this Post?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5 class="black">This action cannot be undone.</h5>
+                                    <p class="text-uppercase black"><span class="bg-warning text-wrap">warning:</span> this will delete all posts with name: {{ post.post_name }} !</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-success btn-sm text-uppercase">Yes - Delete</a>
+                                    <button type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-dismiss="modal">No - Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
                 {% endfor %}
-    
             </div>
         </div>
     </div>

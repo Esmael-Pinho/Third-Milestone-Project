@@ -23,7 +23,7 @@
   --dark-blue: #051417;
   --blue: #1a5eb3;
   --yellow: #ffc800;
-  --green: #28e61a;
+  --green: #198754;
   --gradient: linear-gradient(90deg, #800080, #e74536, #800080);
 }
 /* ---------------  /End Roots  -------------- */
@@ -139,7 +139,9 @@ header p{
   text-align: center;
   font-size: 1.2rem;
 }
-
+.green {
+  color: var(--green);
+}
 .yellow,.btn-social:hover,.footer-cont:hover {
   color: var(--yellow);
 }
@@ -430,6 +432,27 @@ img, svg {
 #post-container {
   margin-top: 2rem;
   width: 100%;
+}
+.accordion-button i, .accordion-button strong {
+  padding-right: 5px;
+}
+.accordion-button small {
+  padding-left: 5px;
+}
+.for-category {
+  margin-top: 1rem;
+}
+
+
+
+
+
+
+body.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
 }
 
 /* Media screen width equal to or greater than the xx-large breakpoint */

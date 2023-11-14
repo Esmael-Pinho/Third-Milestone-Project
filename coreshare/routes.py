@@ -139,8 +139,11 @@ def delete_category(category_id):
 
 @app.route("/posts")
 def posts():
-    posts = Post.query.order_by(Post.created_at).all()
     categories = Category.query.order_by(Category.created_at).all()
+    # Retrieve the user_id of the currently logged-in user
+    user_id = User.query.filter_by(user_name=session["user"]).first().id
+    # Fetch posts associated with the logged-in user
+    posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
     return render_template("posts.html", posts=posts, categories=categories)
 
 
@@ -190,6 +193,12 @@ def add_post():
 def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
     categories = list(Category.query.order_by(Category.category_name).all())
+
+    # Ensure the logged-in user is the owner of the post
+    if post.author.user_name != session["user"]:
+        flash("You don't have permission to edit this post.", category="error")
+        return redirect(url_for("posts"))
+
     if request.method == "POST":
         post.post_name = request.form.get("post_name")
         post.post_description = request.form.get("post_description")
@@ -212,6 +221,12 @@ def is_valid_image_url(url):
 @app.route("/delete_post/<int:post_id>")
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
+
+    # Ensure the logged-in user is the owner of the post
+    if post.author.user_name != session["user"]:
+        flash("You don't have permission to edit this post.", category="error")
+        return redirect(url_for("posts"))
+    
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for("posts"))
