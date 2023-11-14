@@ -3,11 +3,11 @@
 
 <div class="main">
     <div class="container profile-container">
-        <h2 class="text-center">{{ session['user'] }}'s posts</h2>
+        <h1 class="text-center first-text">{{ session['user'] }}'s posts</h1>
         <div class="row justify-content-md-center ">
             <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
                 <div class="card-body">
-                    <p class="card-text">Share with others what you doing for Christmas</p>
+                    <p class="card-text">Create and share with others what you doing for Christmas</p>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                    <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="deleteModal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <h5 class="black">This action cannot be undone.</h5>
-                                    <p class="text-uppercase black"><span class="bg-warning text-wrap">warning:</span> this will delete all posts with name: {{ post.post_name }} !</p>
+                                    <p class="text-uppercase black"><span class="bg-danger text-wrap">warning:</span> this will delete all posts with name: {{ post.post_name }} !</p>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-success btn-sm text-uppercase">Yes - Delete</a>

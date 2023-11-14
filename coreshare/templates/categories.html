@@ -5,10 +5,10 @@
 
         <section class="dash-section " id="category">
             <div class="row justify-content-md-center mess-1 cat">
-                <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
+                <div class="card col-sm-9 col-md-7 col-lg-5 welcome-msg ">
                     <div class="card-body">
                         <h4 class="card-title black text-center">Welcome {{ session['user'] }} !</h4>
-                        <p class="card-text">Create categories for your Christmas moments
+                        <p class="card-text text-center">Create categories for your Christmas moments
                         </p>
                     </div>
                 </div>
@@ -20,12 +20,12 @@
             </div>
 
             <div class="category">
-                <div class="row">
+                <div class="row justify-content-center">
                     {% for category in categories|sort(attribute="created_at") %}
-                        <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4 mb-1">
                             <div class="category-item">
                                 <a class="category-link" data-bs-toggle="modal" data-bs-target="#post-modal-{{ category.id }}" href="#">
-                                    <div class="category-hover">
+                                    <div style="width: 416px; height: 324px;" class="category-hover">
                                         <div class="category-hover-content"><i class="fas fa-plus fa-3x"></i>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                         </div>
                                         
                                         <!-- Modal -->
-                                        <div class="modal fade" id="modal-{{ category.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                                        <div class="modal fade" id="modal-{{ category.id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="deleteModal" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -64,7 +64,7 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <h5 class="black">This action cannot be undone.</h5>
-                                                        <p class="text-uppercase black"><span class="bg-warning text-wrap">warning:</span> this will delete all related categories !</p>
+                                                        <p class="text-uppercase black"><span class="bg-danger text-wrap">warning:</span> this will delete all posts within the category !</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="{{ url_for('delete_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Yes - Delete</a>
@@ -75,7 +75,7 @@
                                         </div>
 
                                     {% else %}
-                                        <div class="category-caption-heading">{{ category.category_name }}<small>  By: <span class="yellow">{{ category.owner.user_name }}</span></small></div>
+                                        <div class="category-caption-heading">{{ category.category_name }}</div>
                                     {% endif %}
                                 </div>
 
@@ -83,7 +83,7 @@
                                 <div class="category-modal modal fade" id="post-modal-{{ category.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-sm modal-lg modal-xl">
                                         <div class="modal-content">
-                                            <h1 class="text-center">{{ category.category_name }}</h1>
+                                            <h1 class="text-center black bold">{{ category.category_name }}</h1>
                                             <div class="close-modal" data-bs-dismiss="modal"><img src="../static/images/close-icon.svg" alt="Close modal" /></div>
                                             <div class="container">
                                                 <div class="row justify-content-center">
@@ -96,7 +96,7 @@
                                                                         <div class="card h-100">
                                                                             <img style="height: 350px;" src="{{ post.post_image_url }}" class="card-img-top" alt="{{ post.post_name }}">
                                                                             <div class="card-body">
-                                                                                <h5 class="card-title black">{{ post.post_name }}</h5>
+                                                                                <h5 class="card-title black text-wrap bg-warning">{{ post.post_name }}</h5>
                                                                                 <p class="card-text black">{{ post.post_description }}</p>
                                                                             </div>
                                                                             <div class="card-footer">

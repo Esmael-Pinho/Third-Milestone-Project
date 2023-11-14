@@ -28,33 +28,34 @@
 }
 /* ---------------  /End Roots  -------------- */
 
-/* Body */
+/* ----------------------------------  Body ------------------------------------*/
 html {
   scroll-padding-top: 4.5rem;
 }
+
 .light-blue {
   color: var(--light-blue);
 }
 
 body {
-  position: relative;
   background-color: var(--grey);
   font-family: "Ubuntu", 'Oswald', monospace;
 }
 
-#pagesMain {
-  min-height: 88vh;
+.main {
+  overflow-x: hidden;
+  min-height: 100vh; 
 }
 
 
-/* Navbar */
+/* ------------------ Navbar ------------- */
 
 #introNav {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: var(--grey);
-    background-color: transparent;
-    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: var(--grey);
+  transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  box-shadow: 0px 3px 0 0px rgba(234, 169, 5, 0.9);
 }
 .navbar-toggler {
     padding: 0.75rem;
@@ -63,10 +64,25 @@ body {
     font-weight: bold;
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
 .navbar-brand {
   img {
       height: 1.5rem;
   }
+}
+
+#introNav .container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-nav {
@@ -89,7 +105,7 @@ body {
 }
 
 
-/* Intro */
+/* ------------------ Intro / base.html ------------- */
 
 .Intro {
   padding-top: 10.5rem;
@@ -102,48 +118,261 @@ body {
   background-size: cover;
   filter: brightness(93%); 
 }
+
 .Intro-subheading {
   font-size: 3.5rem;
 }
+
 .Intro-heading,.Intro-subheading, p {
   color: var(--white);
 }
+
 .Intro-heading:first{
   margin: 1.5rem;
 }
 .second{
   margin-bottom: 1.5rem;
 }
+
 .Intro-heading {
   font-size: 1.5rem;
 }
+
 header p{
   margin-top: 2rem;
 }
 .log-btn {
   margin: 1.75rem;
 }
+
 .reg-link {
   color: var(--white);
   cursor: pointer;
 }
+
 .reg-link:hover, .submit-btn:hover i {
   color: var(--yellow);
 }
+
 .white {
   color: var(--white);
 }
 
-/* Footer */
-.footer {
+
+/* ------------------ Login / Register ------------- */
+
+.login-page, .register-page {
+  padding-top: 4.5rem;
+  padding-bottom: 2.9rem;
   text-align: center;
-  font-size: 1.2rem;
+  background-image: url(../images/intro-img-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(93%); 
 }
-.green {
-  color: var(--green);
+
+.login-page {
+  padding-bottom: 11.2rem;
 }
-.yellow,.btn-social:hover,.footer-cont:hover {
+
+.reg-log-title {
+  font-size: 56px;
+  font-weight: 900;
+}
+
+.mess-1 {
+  margin: 1.5rem auto 3rem auto;
+  font-family: "Ubuntu", 'Oswald', monospace;
+}
+
+.cat {
+  margin-bottom: 0!important;
+}
+
+.mess-2 {
+  margin-top: 1rem;
+}
+
+.form-floating, .form-group {
+  margin: .5rem;
+}
+
+.black {
+  color: #000;
+  font-weight: 800;
+}
+
+.black a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.black a:hover {
   color: var(--yellow);
+  text-decoration: underline var(--white);
+}
+
+.form-signin {
+  max-width: 430px;
+  padding: 1rem;
+}
+
+
+/* ------------------ Contact page ------------- */
+
+
+#contact {
+  background-image: url(../images/contact.jpg);
+  height: 88vh;
+  padding-top: 2rem;
+}
+
+#contact .container {
+  padding-top: 5rem;
+}
+
+.form-group textarea {
+  height: 128px;
+}
+
+.cont-us {
+  margin-bottom: 1.5rem;
+}
+
+.contact-btn {
+  margin-top: 3rem;
+}
+
+
+/* ------------------ Categories / Post ------------- */
+
+.index-cont {
+  overflow-x: hidden;
+  background: url(../images/background-test-5.webp) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.dash-section {
+  padding-top: 6.5rem;
+}
+
+.welcome-msg {
+  margin: .5rem auto 2rem auto;
+  border: none;
+}
+
+.welcome-msg .card-body {
+  border: 4px solid var(--blue);
+  background-color: #9e9c9c4e;
+}
+
+.welcome-msg .card-title {
+  font-size: 30px;
+}
+
+.welcome-msg .card-text {
+  font-size: 20px;
+}
+
+.profile-container .first-text {
+  margin-top: 1rem;
+}
+
+#category .category-item {
+  max-width: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#category .category-item .category-link {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+#category .category-item .category-link .category-hover {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 200, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity ease-in-out 0.25s;
+}
+
+#category .category-item .category-link .category-hover .category-hover-content {
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+#category .category-item .category-link:hover .category-hover {
+  opacity: 1;
+}
+
+#category .category-item .category-caption {
+  padding: .5rem;
+}
+
+#category .category-item .category-caption .category-caption-heading {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0;
+  color: var(--yellow);
+  background-color: #00000010;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.category-hover, .category-link img {
+  border-radius: 15px;
+}
+
+.category {
+  margin-top: 1.5rem;
+}
+
+.category-caption {
+  margin: auto;
+  max-width: 15rem;
+}
+
+.welcome-msg {
+  background-color: transparent;
+}
+
+.profile-container {
+  padding-top: 5rem;
+}
+
+.profile-container .welcome-msg {
+  margin-bottom: 1rem;
+}
+
+.submit-btn {
+  background-color: var(--yellow);
+}
+
+.submit-btn:hover {
+  background-color: var(--white);
+}
+
+.add {
+  margin-top: 5rem;
+}
+
+.add .list-group-item {
+  margin: 1.5rem;
+}
+
+.add i, .add label {
+  font-size: 24px;
+}
+
+.addBorder {
+  border: 2px solid var(--light-blue);
 }
 
 /* Button */
@@ -152,6 +381,23 @@ header p{
   font-family: "Oswald", 'Ubuntu', monospace;
   font-size: 1.125rem;
   font-weight: bold;
+}
+
+
+
+
+/* ------------------ Footer ------------- */
+.footer {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.green {
+  color: var(--green);
+}
+
+.yellow,.btn-social:hover,.footer-cont:hover {
+  color: var(--yellow);
 }
 
 .log-btn:hover, .reg-btn:hover, #contact-btn:hover {
@@ -179,192 +425,8 @@ header p{
   font-size: 24px;
 }
 
-.login-page, .register-page {
-  padding-top: 4.5rem;
-  padding-bottom: 2.9rem;
-  text-align: center;
-  background-image: url(../images/intro-img-1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: brightness(93%); 
-}
-.login-page {
-  padding-bottom: 11.2rem;
-}
-.reg-log-title {
-  font-size: 56px;
-  font-weight: 900;
-}
 
-.mess-1 {
-  margin: 1.5rem auto 3rem auto;
-  font-family: "Ubuntu", 'Oswald', monospace;
-}
-.cat {
-  margin-bottom: 0!important;
-}
-.mess-2 {
-  margin-top: 1rem;
-}
-
-.form-floating, .form-group {
-  margin: .5rem;
-}
-
-.black {
-  color: #000;
-  font-weight: 800;
-}
-.black a {
-  color: #fff;
-  text-decoration: none;
-}
-.black a:hover {
-  color: var(--yellow);
-  text-decoration: underline var(--white);
-}
-.form-signin {
-  max-width: 430px;
-  padding: 1rem;
-}
-.grey-container {
-  max-width: 1000px;
-  padding: 1rem;
-  margin: auto;
-  background-color: rgba(21, 21, 21, 0.311);
-  border-radius: 15px;
-}
-
-.index-cont {
-  overflow-x: hidden;
-  background-image: url(../images/background-test-5.webp);
-  background-size: cover;
-  min-height: 88vh;
-}
-.dash-section {
-  padding-top: 6.5rem;
-}
-.welcome-msg {
-  margin-top: .5rem;
-  margin-bottom: 2rem;
-  border: none;
-}
-.welcome-msg .card-body {
-  border: 4px solid var(--blue);
-  background-color: #9e9c9c4e;
-}
-.welcome-msg .card-title {
-  font-size: 30px;
-}
-.welcome-msg .card-text {
-  font-size: 20px;
-}
-
-#category .category-item {
-  max-width: 26rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-#category .category-item .category-link {
-  position: relative;
-  display: block;
-  margin: 0 auto;
-}
-#category .category-item .category-link .category-hover {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 200, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity ease-in-out 0.25s;
-}
-#category .category-item .category-link .category-hover .category-hover-content {
-  font-size: 1.25rem;
-  color: var(--white);
-}
-#category .category-item .category-link:hover .category-hover {
-  opacity: 1;
-}
-#category .category-item .category-caption {
-  padding: .5rem;
-}
-#category .category-item .category-caption .category-caption-heading {
-  font-size: 1.5rem;
-  font-weight: 900;
-  margin-bottom: 0;
-  color: var(--yellow);
-  background-color: #00000010;
-  border-radius: 15px;
-  text-align: center;
-}
-.category-hover, .category-link img {
-  border-radius: 15px;
-}
-.category {
-  margin-top: 1.5rem;
-}
-.category-caption {
-  margin: auto;
-  max-width: 15rem;
-}
-
-.welcome-msg {
-  background-color: transparent;
-}
-
-#contact {
-  background-image: url(../images/contact.jpg);
-  height: 88vh;
-  padding-top: 2rem;
-}
-
-#contact .container {
-  padding-top: 5rem;
-}
-.form-group textarea {
-  height: 128px;
-}
-.cont-us {
-  margin-bottom: 1.5rem;
-}
-.contact-btn {
-  margin-top: 3rem;
-}
-.main {
-  height: 88vh;
-  overflow-x: hidden;
-}
-.profile-container {
-  padding-top: 5rem;
-}
-.profile-container .welcome-msg {
-  margin-bottom: 1rem;
-}
-.submit-btn {
-  background-color: var(--yellow);
-}
-.submit-btn:hover {
-  background-color: var(--white);
-}
-.add {
-  margin-top: 5rem;
-}
-.add .list-group-item {
-  margin: 1.5rem;
-}
-.add i, .add label {
-  font-size: 24px;
-}
-.addBorder {
-  border: 2px solid var(--light-blue);
-}
-
-
-
-
+/* ------------------ Modal ------------- */
 
 .category-modal .modal-dialog {
   margin: 1rem;
@@ -400,8 +462,6 @@ header p{
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 1.75rem;
-  pointer-events: none;
 }
 
 .category-modal .close-modal {
@@ -444,38 +504,13 @@ img, svg {
 }
 
 
-
-
-
-
-body.modal-open {
-  overflow: hidden;
-}
-.modal {
-  position: fixed;
-}
-
-/* Media screen width equal to or greater than the xx-large breakpoint */
-@media (min-width: 1400px) {
-  
-}
-
-/* Media screen width equal to or greater than the x-large breakpoint */
-@media (min-width: 1200px) {
-    
-}
-
-/* Media screen width equal to or greater than the large breakpoint */
-@media (min-width: 992px) {
-  
-}
-
-/* Media screen width equal to or greater than the medium breakpoint */
-@media (min-width: 768px) {
-  
-}
-
 /* Media screen width equal to or greater than the small breakpoint */
-@media (min-width: 576px) {
-  
+@media (max-width: 576px) {
+  .contact-btn {
+    margin-top: 0;
+  }
+
+  .mb-5 {
+    margin-bottom: 0 !important;
+  }
 }
