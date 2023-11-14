@@ -275,8 +275,12 @@ header p{
   font-size: 20px;
 }
 
-.profile-container .first-text {
-  margin-top: 1rem;
+.first-text {
+  margin-top: 2rem;
+}
+
+.category {
+  margin-top: 2.5rem;
 }
 
 #category .category-item {
@@ -328,10 +332,6 @@ header p{
 
 .category-hover, .category-link img {
   border-radius: 15px;
-}
-
-.category {
-  margin-top: 1.5rem;
 }
 
 .category-caption {
