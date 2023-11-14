@@ -298,7 +298,7 @@ header p{
   border-radius: 15px;
   text-align: center;
 }
-.img-fluid, .category-hover {
+.category-hover, .category-link img {
   border-radius: 15px;
 }
 .category {
@@ -425,6 +425,11 @@ img, svg {
 
 .close-posts-modal {
   margin: auto;
+}
+
+#post-container {
+  margin-top: 2rem;
+  width: 100%;
 }
 
 /* Media screen width equal to or greater than the xx-large breakpoint */

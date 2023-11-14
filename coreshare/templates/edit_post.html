@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="main addMain">
+
+
+        <div class="row justify-content-md-center add">
+            <h1 class="text-center">Edit Post</h1>
+
+            <form class="col-sm-11 col-md-8 col-lg-6" method="POST" action="{{ url_for('edit_post', post_id=post.id) }}">
+                <ul class="addBorder">
+                    <!-- Post Name -->
+                    <li class="list-group-item">
+                        <i class="fas fa-pencil-alt"></i> <label for="post_name"> Post Name</label>
+                        <input for="post_name" class="form-control" id="post_name" name="post_name" value="{{ post.post_name }}" type="text" placeholder=" Post name " required>
+                    </li>
+                    <!-- Post Description -->
+                    <li class="list-group-item form-group-textarea">
+                        <i class="fas fa-align-left"></i> <label for="post_description"> Description</label>
+                        <textarea for="post_description" class="form-control" id="post_description" name="post_description" value="{{ post.post_description }}" placeholder=" Your post description *" required></textarea>
+                    </li>
+                    <!-- Image URL -->
+                    <li class="list-group-item">
+                        <i class="fa-regular fa-image"></i> <label for="post_image_url"> Image</label>
+                        <input for="post_image_url" id="post_image_url" name="post_image_url" value="{{ post.post_image_url }}" type="text" class="form-control" placeholder=" Place your image URL here *">
+                    </li>
+                    <!-- Select from Post Category-->
+                    <li class="list-group-item">
+                        <i class="fas fa-folder-open"></i>
+                        <label for="category_id"> Category</label>
+                        <select id="category_id" name="category_id" class="form-select" aria-label="Category Select options" required>
+                            <option disabled>Choose Category</option>
+                            {% for category in categories %}
+                                {% if category.id == post.category_id %}
+                                    <option value="{{ category.id }}" selected>{{ category.category_name }}</option>
+                                {% else %}
+                                    <option value="{{ category.id }}">{{ category.category_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </li>
+                </ul>
+            
+                <!-- Submi a Post -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-warning btn-xl text-uppercase submit-btn">Edit Post <i class="fas fa-plus-square right"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

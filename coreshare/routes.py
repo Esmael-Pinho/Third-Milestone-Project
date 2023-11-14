@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from flask import flash, render_template, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
@@ -137,11 +137,11 @@ def delete_category(category_id):
     return redirect(url_for("categories"))
 
 
-
 @app.route("/posts")
 def posts():
-    posts = list(Post.query.order_by(Post.id).all())
-    return render_template("posts.html", posts=posts)
+    posts = Post.query.order_by(Post.created_at).all()
+    categories = Category.query.order_by(Category.created_at).all()
+    return render_template("posts.html", posts=posts, categories=categories)
 
 
 @app.route('/add_post', methods=['GET', 'POST'])
@@ -164,6 +164,9 @@ def add_post():
         created_at = datetime.utcnow()
         is_new = bool(request.form.get("is_new"))
 
+        # Retrieve the selected category_id from the form
+        category_id = request.form.get("category_id")
+
         new_post = Post(
             post_name=post_name,
             post_description=post_description,
@@ -181,6 +184,22 @@ def add_post():
         return redirect(url_for('posts'))
 
     return render_template('add_post.html', categories=categories)
+
+
+@app.route("/edit_post/<int:post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    categories = list(Category.query.order_by(Category.category_name).all())
+    if request.method == "POST":
+        post.post_name = request.form.get("post_name")
+        post.post_description = request.form.get("post_description")
+        post.is_new = bool(True if request.form.get("is_new") else False)
+        post.category_id = request.form.get("category_id")
+        db.session.commit()
+
+        flash("Post edited successfully!", category="success")
+        return redirect(url_for("posts"))
+    return render_template("edit_post.html", post=post, categories=categories)
 
 
 def is_valid_image_url(url):
