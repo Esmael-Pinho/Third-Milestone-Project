@@ -3,7 +3,7 @@
 
 <div class="main">
     <div class="container profile-container">
-        <h1 class="text-center first-text"><span class="text-wrap yellow">{{ session['user'] }}</span>'s posts</h1>
+        <h1 class="text-center first-text text-capitalize"><span class="text-wrap yellow">{{ session['user'] }}</span>'s posts</h1>
         <div class="row justify-content-md-center ">
             <div class="card col-sm-12 col-md-7 col-lg-4 welcome-msg">
                 <div class="card-body">
@@ -28,7 +28,7 @@
                                         {% if loop.last %}
                                             <i class="fas fa-exclamation-circle"></i> 
                                         {% endif %}
-                                        <strong> {{ post.post_name }}</strong>-  <small> Created at: {{ post.created_at.strftime('%Y-%m-%d') }}</small> 
+                                        <strong> {{ post.post_name }}</strong> - <small>Created at: {{ post.created_at.strftime('%Y-%m-%d %I:%M %p') }}</small>
                                     </button>
                                 </h3>
                                 <div id="collapsePost{{ post.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionPost{{ post.id }}">

@@ -101,7 +101,7 @@ body {
   padding-top: 10.5rem;
   padding-bottom: 1rem;
   text-align: center;
-  background-image: url(../images/intro-img-2.jpg);
+  background-image: url(../images/intro-bg.webp);
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -162,7 +162,7 @@ header p{
   padding-top: 4.5rem;
   padding-bottom: 2.9rem;
   text-align: center;
-  background-image: url(../images/intro-img-1.jpg);
+  background-image: url(../images/login-register-bg.webp);
   background-repeat: no-repeat;
   background-size: cover;
   filter: brightness(93%); 
@@ -219,7 +219,7 @@ header p{
 
 
 #contact {
-  background-image: url(../images/contact.jpg);
+  background-image: url(../images/contact-bg.webp);
   height: 88vh;
   padding-top: 2rem;
 }
@@ -251,7 +251,7 @@ header p{
 
 .index-cont {
   overflow-x: hidden;
-  background: url(../images/background-test-11.jpeg) center;
+  background: url(../images/categories-bg.webp) center;
   background-size: cover;
   background-repeat: no-repeat;
 }
