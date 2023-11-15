@@ -29,9 +29,7 @@
 /* ---------------  /End Roots  -------------- */
 
 /* ----------------------------------  Body ------------------------------------*/
-html {
-  scroll-padding-top: 4.5rem;
-}
+
 
 .light-blue {
   color: var(--light-blue);
@@ -62,14 +60,6 @@ body {
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: bold;
-}
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
 }
 
 .navbar-brand {
@@ -125,6 +115,13 @@ body {
 
 .Intro-heading,.Intro-subheading, p {
   color: var(--white);
+}
+
+.Intro-header-img img {
+  max-width: 100%; 
+  max-height: 100%; 
+  width: auto; 
+  height: auto;
 }
 
 .Intro-heading:first{
@@ -238,6 +235,12 @@ header p{
 .cont-us {
   margin-bottom: 1.5rem;
 }
+.cont-us h3 {
+  width: 70%;
+  margin: auto;
+  background-color: #6665659f;
+  border-radius: 15px;
+}
 
 .contact-btn {
   margin-top: 3rem;
@@ -248,7 +251,7 @@ header p{
 
 .index-cont {
   overflow-x: hidden;
-  background: url(../images/background-test-5.webp) center;
+  background: url(../images/background-test-11.jpeg) center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -328,6 +331,7 @@ header p{
   background-color: #00000010;
   border-radius: 15px;
   text-align: center;
+  width: 100%;
 }
 
 .category-hover, .category-link img {
@@ -336,7 +340,7 @@ header p{
 
 .category-caption {
   margin: auto;
-  max-width: 15rem;
+  /* max-width: 15rem; */
 }
 
 .welcome-msg {
@@ -504,13 +508,32 @@ img, svg {
 }
 
 
-/* Media screen width equal to or greater than the small breakpoint */
-@media (max-width: 576px) {
+/* Media screen width */
+@media (min-width: 420px) {
+  .navbar-toggler {
+    font-size: 1.25rem;
+  }
+  
   .contact-btn {
-    margin-top: 0;
+    margin: .5rem auto 2rem auto;
   }
 
   .mb-5 {
     margin-bottom: 0 !important;
   }
+
+}
+
+@media (min-width: 576px) {
+  .navbar-toggler {
+    margin: auto;
+  }
+  
+}
+
+@media (min-width: 778px) {
+  .contact-btn {
+    margin-top: 3rem;
+  }
+  
 }

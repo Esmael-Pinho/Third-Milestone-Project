@@ -7,7 +7,7 @@
             <div class="row justify-content-md-center mess-1 cat">
                 <div class="card col-sm-9 col-md-7 col-lg-5 welcome-msg ">
                     <div class="card-body">
-                        <h4 class="card-title black text-center">Welcome {{ session['user'] }} !</h4>
+                        <h4 class="card-title black text-center">Welcome <span class="text-wrap yellow"> {{ session['user'] }} </span>!</h4>
                         <p class="card-text text-center">Create categories for your Christmas moments
                         </p>
                     </div>
@@ -33,38 +33,22 @@
                                 </a>
                                 <div class="category-caption">
                                     {% if category.owner.user_name == session.user %}
-                                        <div class="accordion" id="accordionCategory">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header text-center">
-                                                    <button class="accordion-button collapsed yellow" type="button" data-bs-toggle="collapse" data-bs-target="#{{ category.id }}" aria-expanded="false" aria-controls="{{ category.id }}">
-                                                        <h5>{{ category.category_name }}</h5>
-                                                    </button>
-                                                </h2>
-                                                <div id="{{ category.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCategory">
-                                                    <div class="accordion-body text-center">
-                                                        <p>
-                                                            <a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Edit</a>
-                                                            <!-- Button trigger modal -->
-                                                            <button href="#" type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ category.id }}">
-                                                                delete
-                                                            </button>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="category-caption-heading"><span><a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Edit</a></span> {{ category.category_name }} <span><button href="#" type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ category.id }}">
+                                            delete
+                                        </button></span></div>
                                         
-                                        <!-- Modal -->
+                                        <!-- Modal for delete -->
                                         <div class="modal fade" id="modal-{{ category.id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="deleteModal" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5 text-uppercase black" id="deleteModal">Are you sure you want<br>to delete this Category?</h1>
+                                                        <h1 class="modal-title fs-5 text-uppercase black" id="deleteModal">Are you sure you want<br>to delete the - <span class="text-wrap bg-warning">{{ category.category_name }}</span> - Category?</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <h5 class="black">This action cannot be undone.</h5>
-                                                        <p class="text-uppercase black"><span class="bg-danger text-wrap">warning:</span> this will delete all posts within the category !</p>
+                                                        <p class="text-uppercase black"><span class="bg-danger text-wrap">warning:</span> this will also delete all your posts 
+                                                            that are in the category !</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a href="{{ url_for('delete_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Yes - Delete</a>
