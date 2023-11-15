@@ -164,13 +164,18 @@ def delete_category(category_id):
 
 @app.route("/posts")
 def posts():
-    categories = Category.query.order_by(Category.created_at).all()
     # Retrieve the user_id of the currently logged-in user
-    user_id = User.query.filter_by(user_name=session["user"]).first().id
-    # Fetch posts associated with the logged-in user
-    posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
+    user = User.query.filter_by(user_name=session["user"]).first()
 
-    return render_template("posts.html", posts=posts, categories=categories)
+    if user:
+        # Fetch posts associated with the logged-in user
+        posts = Post.query.filter_by(user_id=user.id).order_by(Post.created_at).all()
+        categories = Category.query.order_by(Category.created_at).all()
+        return render_template("posts.html", posts=posts, categories=categories)
+    else:
+        flash("User not found", category="error")
+        return redirect(url_for("login"))
+
 
 
 
