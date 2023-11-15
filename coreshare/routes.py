@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import flash, render_template, request, redirect, session, url_for
+from flask import flash, render_template, request, redirect, session, url_for, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
 from coreshare.model import User, Category, Post
@@ -142,8 +142,22 @@ def edit_category(category_id):
 @app.route("/delete_category/<int:category_id>")
 def delete_category(category_id):
     category = Category.query.get_or_404(category_id)
+
+    # Check if the current user is the owner of the category
+    if category.owner.user_name != session["user"]:
+        flash("You don't have permission to delete this category.", category="error")
+        return redirect(url_for("categories"))
+
+    # Check if there are posts in the category created by other users
+    other_user_posts = Post.query.filter(Post.category_id == category.id, Post.author != category.owner).count()
+    if other_user_posts > 0:
+        flash("Cannot delete category while there's posts from other users on it.", category="error")
+        return redirect(url_for("categories"))
+
+    # If all checks pass, delete the category
     db.session.delete(category)
     db.session.commit()
+    flash("Category deleted successfully!", category="success")
     return redirect(url_for("categories"))
 
 
