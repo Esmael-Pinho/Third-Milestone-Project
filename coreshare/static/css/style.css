@@ -356,8 +356,7 @@ header p{
 }
 
 .category-caption {
-  margin: auto;
-  /* max-width: 15rem; */
+  margin: .5rem auto 1.5rem auto;
 }
 
 .welcome-msg {
@@ -530,6 +529,41 @@ img, svg {
 .for-category {
   margin-top: 1rem;
 }
+
+
+/* ------------------ Error 404 page ------------- */
+
+.error-container {
+  padding-top: 7.5rem;
+  margin: auto;
+}
+.page-404-img {
+  background-image: url(../images/error-404.webp);
+  background-position: center;
+  min-height: 88vh;
+}
+
+.error-text-container {
+  background-color: #0000008a;
+}
+
+.red {
+  color: var(--red);
+}
+
+.error-title {
+  font-size: 7rem;
+}
+
+.error-text {
+  margin-top: 4rem;
+  font-size: 2rem;
+}
+
+.error-text-container button {
+  margin: 3rem auto;
+}
+
 
 
 /* Media screen width */

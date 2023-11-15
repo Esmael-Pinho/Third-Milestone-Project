@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="container error-container page-404-img">
+        <div class="row justify-content-center">
+            <div class="col-sm-11 col-md-8 col-lg-7">
+                <div class="text-center">
+                    <div class="error-text-container">
+                        <h2 class="error-title text-uppercase red bold">error 404</h2>
+                        <h4 class="white error-text">
+                            Sorry, it appears there's been some a error<br>
+                            to go back, and try again, click the Logo or the - go back - button bellow!
+                        </h4>
+
+                        <a href="{{ url_for('categories') }}" class="btn btn-xl bg-info text-uppercase">go back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

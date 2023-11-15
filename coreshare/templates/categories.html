@@ -33,9 +33,13 @@
                                 </a>
                                 <div class="category-caption">
                                     {% if category.owner.user_name == session.user %}
-                                        <div class="category-caption-heading"><span><a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Edit</a></span> {{ category.category_name }} <span><button href="#" type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ category.id }}">
-                                            delete
-                                        </button></span></div>
+                                        <div class="category-caption-heading">
+                                            <span><a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn btn-success btn-sm text-uppercase">Edit</a></span>
+                                             {{ category.category_name }} 
+                                            <span><button href="#" type="button" class="btn btn-danger btn-sm text-uppercase" data-bs-toggle="modal" data-bs-target="#modal-{{ category.id }}">
+                                                delete</button>
+                                            </span>
+                                        </div>
                                         
                                         <!-- Modal for delete -->
                                         <div class="modal fade" id="modal-{{ category.id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="deleteModal" aria-hidden="true">

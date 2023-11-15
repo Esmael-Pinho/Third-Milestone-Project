@@ -19,4 +19,14 @@ else:
 
 db = SQLAlchemy(app)
 
+
+# Custom error handler for 404 status code
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('page-404.html'), 404
+
+# Run the application if this file is the main entry point
+if __name__ == "__main__":
+    app.run(debug=True)
+
 from coreshare import routes  # noqa

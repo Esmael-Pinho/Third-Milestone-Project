@@ -3,6 +3,7 @@ from flask import flash, render_template, request, redirect, session, url_for, a
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
 from coreshare.model import User, Category, Post
+from sqlalchemy.exc import SQLAlchemyError
 import requests
 from requests.exceptions import MissingSchema, ConnectionError
 
@@ -166,9 +167,19 @@ def posts():
     categories = Category.query.order_by(Category.created_at).all()
     # Retrieve the user_id of the currently logged-in user
     user_id = User.query.filter_by(user_name=session["user"]).first().id
-    # Fetch posts associated with the logged-in user
-    posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
-    return render_template("posts.html", posts=posts, categories=categories)
+
+    try:
+        # Fetch posts associated with the logged-in user
+        posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
+
+        return render_template("posts.html", posts=posts, categories=categories)
+    except Exception as e:
+        # Log the error (you can customize this part)
+        print(f"Error fetching posts: {e}")
+
+        # Redirect to the 404 page
+        abort(404)
+
 
 
 @app.route('/add_post', methods=['GET', 'POST'])
