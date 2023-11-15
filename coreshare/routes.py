@@ -167,21 +167,7 @@ def posts():
     # Retrieve the user_id of the currently logged-in user
     user_id = User.query.filter_by(user_name=session["user"]).first().id
     
-    # Explicitly specify the columns in the query
-    posts_query = db.session.query(
-        Post.id, Post.post_name, Post.post_description, 
-        Post.post_image_url, Post.is_new, Post.created_at, 
-        Post.category_id, Post.user_id
-    ).filter_by(user_id=user_id).order_by(Post.created_at)
-
-    try:
-        # Execute the query
-        posts = posts_query.all()
-    except Exception as e:
-        # Handle exceptions (print or log the error)
-        print(f"Error fetching posts: {e}")
-        flash("Error fetching posts.", category="error")
-        return redirect(url_for("posts"))
+    
     
     return render_template("posts.html", posts=posts, categories=categories)
 
