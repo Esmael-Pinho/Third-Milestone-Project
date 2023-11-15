@@ -166,9 +166,8 @@ def posts():
     categories = Category.query.order_by(Category.created_at).all()
     # Retrieve the user_id of the currently logged-in user
     user_id = User.query.filter_by(user_name=session["user"]).first().id
-    
-    
-    
+    # Fetch posts associated with the logged-in user
+    posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
     return render_template("posts.html", posts=posts, categories=categories)
 
 
@@ -206,7 +205,7 @@ def add_post():
                 created_at=created_at,
                 post_image_url=post_image_url,
                 is_new=is_new,
-                user_id=user_id,  
+                user_id=user_id,  # Associate the post with the current user
                 category_id=category_id
             )
 
@@ -267,5 +266,3 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for("posts"))
-
-
