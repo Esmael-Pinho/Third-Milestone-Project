@@ -387,6 +387,13 @@ header p{
   font-weight: bold;
 }
 
+.btn-sm:hover {
+  border: 1px solid var(--white);
+}
+.posts-btn:hover {
+  border: 1px solid var(--black);
+}
+
 
 
 
