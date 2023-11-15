@@ -98,7 +98,7 @@ def add_category():
         # Check if the user provided an image URL
         if not category_image_url:
             # If not, set a default image URL
-            category_image_url = "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            category_image_url = "https://t4.ftcdn.net/jpg/04/00/24/31/360_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
 
         try:
             # Validate image URL
