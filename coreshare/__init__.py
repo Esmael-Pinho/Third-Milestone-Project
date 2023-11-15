@@ -25,7 +25,6 @@ db = SQLAlchemy(app)
 def page_not_found(e):
     return render_template('page-404.html'), 404
 
-# Run the application if this file is the main entry point
 if __name__ == "__main__":
     app.run(debug=True)
 

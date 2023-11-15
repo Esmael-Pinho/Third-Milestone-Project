@@ -66,7 +66,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_name = db.Column(db.String(80), nullable=False)
     post_description = db.Column(db.Text, nullable=False)
-    post_image_url = db.Column(db.String(1024), nullable=False)   # add image_url atribute
+    post_image_url = db.Column(db.String(1024), nullable=False)  
     is_new = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     category_id = db.Column(db.Integer, db.ForeignKey(

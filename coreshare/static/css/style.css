@@ -144,6 +144,7 @@ html, body {
 .Intro-heading:first{
   margin: 1.5rem;
 }
+
 .second{
   margin-bottom: 1.5rem;
 }
@@ -155,6 +156,7 @@ html, body {
 header p{
   margin-top: 2rem;
 }
+
 .log-btn {
   margin: 1.75rem;
 }
@@ -252,6 +254,7 @@ header p{
 .cont-us {
   margin-bottom: 1.5rem;
 }
+
 .cont-us h3 {
   width: 70%;
   margin: auto;
@@ -406,11 +409,10 @@ header p{
 .btn-sm:hover {
   border: 1px solid var(--white);
 }
+
 .posts-btn:hover {
   border: 1px solid var(--black);
 }
-
-
 
 
 /* ------------------ Footer ------------- */
@@ -451,7 +453,6 @@ header p{
 .btn-social i {
   font-size: 24px;
 }
-
 
 /* ------------------ Modal ------------- */
 
@@ -504,6 +505,7 @@ header p{
 .category-modal .modal-content img {
   margin-bottom: 2rem;
 }
+
 img, svg {
   vertical-align: middle;
 }
@@ -520,16 +522,18 @@ img, svg {
   margin-top: 2rem;
   width: 100%;
 }
+
 .accordion-button i, .accordion-button strong {
   padding-right: 5px;
 }
+
 .accordion-button small {
   padding-left: 5px;
 }
+
 .for-category {
   margin-top: 1rem;
 }
-
 
 /* ------------------ Error 404 page ------------- */
 
@@ -537,6 +541,7 @@ img, svg {
   padding-top: 7.5rem;
   margin: auto;
 }
+
 .page-404-img {
   background-image: url(../images/error-404.webp);
   background-position: center;
@@ -563,8 +568,6 @@ img, svg {
 .error-text-container button {
   margin: 3rem auto;
 }
-
-
 
 /* Media screen width */
 @media (min-width: 420px) {

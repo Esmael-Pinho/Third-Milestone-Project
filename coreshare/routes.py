@@ -174,7 +174,7 @@ def posts():
 
         return render_template("posts.html", posts=posts, categories=categories)
     except Exception as e:
-        # Log the error (you can customize this part)
+        # Log the error 
         print(f"Error fetching posts: {e}")
 
         # Redirect to the 404 page
@@ -216,7 +216,7 @@ def add_post():
                 created_at=created_at,
                 post_image_url=post_image_url,
                 is_new=is_new,
-                user_id=user_id,  # Associate the post with the current user
+                user_id=user_id, 
                 category_id=category_id
             )
 
@@ -257,7 +257,7 @@ def edit_post(post_id):
 
 def is_valid_image_url(url):
     if not url:
-        # If the URL is empty, consider it invalid
+        
         return True
     
     response = requests.get(url)
