@@ -167,18 +167,10 @@ def posts():
     categories = Category.query.order_by(Category.created_at).all()
     # Retrieve the user_id of the currently logged-in user
     user_id = User.query.filter_by(user_name=session["user"]).first().id
+    # Fetch posts associated with the logged-in user
+    posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
 
-    try:
-        # Fetch posts associated with the logged-in user
-        posts = Post.query.filter_by(user_id=user_id).order_by(Post.created_at).all()
-
-        return render_template("posts.html", posts=posts, categories=categories)
-    except Exception as e:
-        # Log the error 
-        print(f"Error fetching posts: {e}")
-
-        # Redirect to the 404 page
-        abort(404)
+    return render_template("posts.html", posts=posts, categories=categories)
 
 
 

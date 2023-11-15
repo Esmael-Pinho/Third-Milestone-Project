@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="introNav">
             <div class="container">
                 {% if session.user %}
-                    <a class="navbar-brand" href=""><img src="../static/images/nav-logo.webp" alt="CoreShare Logo" /></a>
+                    <a class="navbar-brand" href="{{ url_for('categories') }}"><img src="../static/images/nav-logo.webp" alt="CoreShare Logo" /></a>
                 {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
