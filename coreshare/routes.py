@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
 from coreshare.model import User, Category, Post
 import requests
+from requests.exceptions import MissingSchema, ConnectionError
 
 
 @app.route("/")
@@ -93,25 +94,34 @@ def add_category():
         category_name = request.form.get("category_name")
         category_image_url = request.form.get("category_image_url")
 
-        # Validate image URL
-        if not is_valid_image_url(category_image_url):
+        # Check if the user provided an image URL
+        if not category_image_url:
+            # If not, set a default image URL
+            category_image_url = "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+        try:
+            # Validate image URL
+            if not is_valid_image_url(category_image_url):
+                raise MissingSchema("Invalid image URL")
+
+            # Get the user_id of the currently logged-in user
+            user_id = User.query.filter_by(user_name=session["user"]).first().id
+
+            new_category = Category(
+                category_name=category_name,
+                category_image_url=category_image_url,
+                user_id=user_id  # Associate the category with the current user
+            )
+
+            db.session.add(new_category)
+            db.session.commit()
+
+            flash("Category added successfully!", category="success")
+            return redirect(url_for("categories"))
+
+        except (MissingSchema, ConnectionError, Exception) as e:
             flash("Invalid image URL, please try again", category="error")
             return render_template("add_category.html")
-
-        # Get the user_id of the currently logged-in user
-        user_id = User.query.filter_by(user_name=session["user"]).first().id
-
-        new_category = Category(
-            category_name=category_name,
-            category_image_url=category_image_url,
-            user_id=user_id  # Associate the category with the current user
-        )
-
-        db.session.add(new_category)
-        db.session.commit()
-
-        flash("Category added successfully!", category="success")
-        return redirect(url_for("categories"))
 
     return render_template("add_category.html")
 
@@ -156,35 +166,44 @@ def add_post():
         post_description = request.form.get("post_description")
         post_image_url = request.form.get("post_image_url")
 
-        # Validate image URL
-        if not is_valid_image_url(post_image_url):
+        # Check if the user provided an image URL
+        if not post_image_url:
+            # If not, set a default image URL
+            post_image_url = "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+        try:
+            # Validate image URL
+            if not is_valid_image_url(post_image_url):
+                raise MissingSchema("Invalid image URL")
+
+            # Get the user_id of the currently logged-in user
+            user_id = User.query.filter_by(user_name=session["user"]).first().id
+
+            created_at = datetime.utcnow()
+            is_new = bool(request.form.get("is_new"))
+
+            # Retrieve the selected category_id from the form
+            category_id = request.form.get("category_id")
+
+            new_post = Post(
+                post_name=post_name,
+                post_description=post_description,
+                created_at=created_at,
+                post_image_url=post_image_url,
+                is_new=is_new,
+                user_id=user_id,  # Associate the post with the current user
+                category_id=category_id
+            )
+
+            db.session.add(new_post)
+            db.session.commit()
+
+            flash("Your post has been created!", category="success")
+            return redirect(url_for('posts'))
+
+        except (MissingSchema, ConnectionError, Exception) as e:
             flash("Invalid image URL, please try again", category="error")
             return render_template('add_post.html', categories=categories)
-
-         # Get the user_id of the currently logged-in user
-        user_id = User.query.filter_by(user_name=session["user"]).first().id
-
-        created_at = datetime.utcnow()
-        is_new = bool(request.form.get("is_new"))
-
-        # Retrieve the selected category_id from the form
-        category_id = request.form.get("category_id")
-
-        new_post = Post(
-            post_name=post_name,
-            post_description=post_description,
-            created_at=created_at,
-            post_image_url=post_image_url,
-            is_new=is_new,
-            user_id=user_id,  # Associate the post with the current user
-            category_id=category_id
-        )
-
-        db.session.add(new_post)
-        db.session.commit()
-
-        flash("Your post has been created!", category="success")
-        return redirect(url_for('posts'))
 
     return render_template('add_post.html', categories=categories)
 
@@ -212,10 +231,13 @@ def edit_post(post_id):
 
 
 def is_valid_image_url(url):
+    if not url:
+        # If the URL is empty, consider it invalid
+        return True
+    
     response = requests.get(url)
-    print(f"Status Code: {response.status_code}")
-    print(f"Headers: {response.headers}")
     return response.status_code == 200 and response.headers['Content-Type'].startswith('image')
+
 
 
 @app.route("/delete_post/<int:post_id>")
