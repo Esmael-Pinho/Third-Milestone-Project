@@ -193,9 +193,15 @@ def add_post():
             # If not, set a default image URL
             post_image_url = "https://t4.ftcdn.net/jpg/04/00/24/31/360_F_400243185_BOxON3h9avMUX10RsDkt3pJ8iQx72kS3.jpg"
 
+        # Check if a category is selected
+        category_id = request.form.get("category_id")
+        if category_id is None or category_id == "Choose Category":
+            flash("Please select a category before submitting the form.", category="error")
+            return render_template('add_post.html', categories=categories)
+
         try:
-            # Validate image URL
-            if not is_valid_image_url(post_image_url):
+            # Validate image URL if provided
+            if post_image_url and not is_valid_image_url(post_image_url):
                 raise MissingSchema("Invalid image URL")
 
             # Get the user_id of the currently logged-in user
@@ -203,14 +209,6 @@ def add_post():
 
             created_at = datetime.utcnow()
             is_new = bool(request.form.get("is_new"))
-
-            # Retrieve the selected category_id from the form
-            category_id = request.form.get("category_id")
-
-            # Ensure that a valid category_id is selected
-            if category_id == "Choose Category":
-                flash("Please select a valid category.", category="error")
-                return render_template('add_post.html', categories=categories)
 
             new_post = Post(
                 post_name=post_name,
@@ -229,7 +227,7 @@ def add_post():
             return redirect(url_for('posts'))
 
         except (MissingSchema, ConnectionError, Exception) as e:
-            flash("Invalid image URL, please try again", category="error")
+            flash("Not an image URL, please try again and make sure to include the full image address", category="error")
             return render_template('add_post.html', categories=categories)
 
     return render_template('add_post.html', categories=categories)
