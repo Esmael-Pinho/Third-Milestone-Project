@@ -207,6 +207,11 @@ def add_post():
             # Retrieve the selected category_id from the form
             category_id = request.form.get("category_id")
 
+            # Ensure that a valid category_id is selected
+            if category_id == "Choose Category":
+                flash("Please select a valid category.", category="error")
+                return render_template('add_post.html', categories=categories)
+
             new_post = Post(
                 post_name=post_name,
                 post_description=post_description,
@@ -228,6 +233,7 @@ def add_post():
             return render_template('add_post.html', categories=categories)
 
     return render_template('add_post.html', categories=categories)
+
 
 
 @app.route("/edit_post/<int:post_id>", methods=["GET", "POST"])
