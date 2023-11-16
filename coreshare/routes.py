@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import flash, _app_ctx_stack, render_template, request, redirect, session, url_for, abort
+from flask import flash, render_template, request, redirect, session, url_for, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from coreshare import app, db
 from coreshare.model import User, Category, Post
