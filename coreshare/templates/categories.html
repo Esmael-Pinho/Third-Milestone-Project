@@ -70,18 +70,18 @@
                                 <!-- Modals to access posts, by category-->
                                 <div class="category-modal modal fade" id="post-modal-{{ category.id }}" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-sm modal-lg modal-xl">
-                                        <div class="modal-content modal-height">
+                                        <div class="modal-content">
                                             <h1 class="text-center black bold">{{ category.category_name }}</h1>
                                             <div class="close-modal" data-bs-dismiss="modal"><img src="../static/images/close-icon.svg" alt="Close modal" /></div>
                                             <div class="container">
                                                 <div class="row justify-content-center">
                                                     <div class="col-lg-11">
-                                                        <div class="modal-body">
+                                                        <div class="modal-body modal-height">
                                                             <!-- Post details-->
                                                             <div class="row row-cols-1 row-cols-md-3 g-4">
                                                                 {% for post in category.posts %}
                                                                     <div class="col">
-                                                                        <div class="card h-100">
+                                                                        <div class="card h-100 posts-card">
                                                                             <img style="height: 350px;" src="{{ post.post_image_url }}" class="card-img-top" alt="{{ post.post_name }}">
                                                                             <div class="card-body">
                                                                                 <h5 class="card-title black text-wrap bg-warning">{{ post.post_name }}</h5>

@@ -42,7 +42,7 @@ body {
 
 .main {
   overflow-x: hidden;
-  min-height: 100vh; 
+  min-height: 90.5vh; 
 }
 
 html, body {
@@ -240,7 +240,6 @@ header p{
 #contact {
   background-image: url(../images/contact-bg.webp);
   height: 88vh;
-  padding-top: 2rem;
 }
 
 #contact .container {
@@ -355,11 +354,11 @@ header p{
   width: 100%;
 }
 
-.category-hover, .category-link img {
+.category-hover, .category-link img, .posts-card {
   border-radius: 15px;
 }
 
-.category-item img {
+.category-item img, .posts-card {
   border: 4px solid var(--black);
 }
 
@@ -537,7 +536,7 @@ img, svg {
 }
 
 .modal-height {
-  min-height: 95vh;
+  min-height: 77vh;
 }
 
 .for-category {

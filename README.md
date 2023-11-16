@@ -14,7 +14,7 @@
 
 ## Repository
 
-[Find the project repository here.]()
+[Find the project repository here.](https://github.com/Esmael-Pinho/Third-Milestone-Project)
 
 # Table of Contents
 
@@ -77,7 +77,6 @@
 
 * As a returning user, I want recipes to include useful information such as a title, a description of what I intend and pictures is necessary. 
 
-* As a returning user, I want to be able to search for specific posts, to make it quicker to find posts with a certain word.
 
 * As a returning user, I want to be able to access and use the website on any device.
 
@@ -111,27 +110,38 @@
 
 ### Icons
 
--
+- [From Fontawesome](https://fontawesome.com/icons).
 
 ### Cards
 
-- 
+- [Bootstrap cards](https://getbootstrap.com/docs/5.3/components/card/#card-groups)
 
 # Wireframes
 
-- [View my wireframes in PDF form here]().
+- [View my Home-Page wireframe](./coreshare/static/images/wireframes/Home-Page-wireframe.png).
+- [View my Intro-Page wireframe](./coreshare/static/images/wireframes/Intro-Page.png).
+- [View my Posts-Page wireframe](./coreshare/static/images/wireframes/Posts-Page-wireframe.png).
+- [View my Contact-Page wireframe](./coreshare/static/images/wireframes/Contact-Page-wireframe.png).
 
 # Features
 
 ## All Pages Features
 
 ### NavBar
-
+Nav structure, simple, responsive, compose of an img logo, two nav links, if the user is not logged in, which after becomes four nav links, being those: Home, My Posts, Contact Us and logout.
+![Navbar](./coreshare/static/images/coreshare-imgs/nav.png)
 
 
 ### Footer 
-
+Footer follows the same principle as the navbar, responsive on all screens, with three sections, the app name, some social links and contact button.
+![Footer](./coreshare/static/images/coreshare-imgs/footer.png)
  
+ ### Intro-Page
+ The navbar has only two links, login and register. The page, as centered mid div, compose of the site name logo, a welcome, msg and login button to direct the user to the sign up page, as well as the footer at the bottom with a contact us link in case of some issues.
+ ![Intro-page](./coreshare/static/images/coreshare-imgs/intro-page.png)
+
+ ### Home-Page
+
 
 ## Register and Log In Pages
 
@@ -139,7 +149,7 @@
 
 <h2 align="center"><img src=""></h2>
 
-- The Register and Log in pages both feature forms, a large red submit button, and a link to the other page incase a user is in the wrong place. E.g. on the Register Page, it says "Already Registered? Log in here."
+- The Register and Log in pages both feature forms, a login and register buttons, and a link to the other page incase a user is in the wrong place. E.g. on the Register Page, it says "Already Registered? Log in here."
 
 - The Register form features input fields for Username, First Name, Last Name and Password. All fields are required.
 
@@ -147,7 +157,9 @@
 
 
 # Future Features
-
+- In the future, I want to implement a small container on the navbar as well on "My Posts", so that the user may upload their photos, and provide them with flexibility, to style it to their own pleasing, as the page is very simple.
+- I hope to implement a comment section, where user may  exchange ideas, comments in real time.
+- Be able to also include videos, as per the site theme, there would be lot's of videos in need of sharing.
 
 
 # Data Model
