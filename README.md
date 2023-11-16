@@ -94,7 +94,9 @@
 
 ### Overview
 
-- The website design is playful, colourful and youthful. The name ‘CoreShare’ refers to the website’s purpose as a way of sharing. 
+- The website design is playful, colourful and youthful. The name ‘CoreShare’ refers to the website’s purpose as a way of sharing.
+User can register and/or login. Users, can add a post by providing a name, description, they can provide a photo if they want want get to choose from the categories created.
+On the home page, user can add new categories and/or view posts that have been created for specific categories. They can send the app owner a message, regarding any ideas to improvements, or buggs, and they can terminate their session, by logging out.
 
 ### Colour Scheme
 
@@ -141,6 +143,8 @@ Footer follows the same principle as the navbar, responsive on all screens, with
  ![Intro-page](./coreshare/static/images/coreshare-imgs/intro-page.png)
 
  ### Home-Page
+ The home page, is where user can create categories, and those will display on the page,being clickable, and if clicked it opens up a modal where it will display the posts that were created for those specify categories.
+ ![Home-page](./coreshare/static/images/coreshare-imgs/create_category-with-category.png)
 
 
 ## Register and Log In Pages

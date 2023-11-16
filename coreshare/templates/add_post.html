@@ -34,7 +34,11 @@
                                 <option value="{{ category.id }}">{{ category.category_name }}</option>
                             {% endfor %}
                         </select>
+                        <small id="categoryMessage" class="form-text text-muted" style="display: none;">
+                            <span class="red">* Please first select a category to add a post.</span></small>
                     </li>
+                    <!-- Add a hidden input field to store the selected category -->
+                    <input type="hidden" id="selectedCategory" name="selectedCategory" value="">
                 </ul>
             
                 <!-- Submi a Post -->
