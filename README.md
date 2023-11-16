@@ -1,8 +1,8 @@
-# CoreShare
+![Coreshare](./coreshare/static/images/readme/coreshare-imgs/logo.png)
 
 ## Milestone Project 3 
 
-<h2 align="center"><img src=""></h2>
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/Am-Responsive.png"></h2>
 
 * CoreShare is a Christmas sharing website which allows users to post anything about their day, their food, good moments, etc. As well as view those submitted by other members. The website design is responsive so it can be used on any device.
 

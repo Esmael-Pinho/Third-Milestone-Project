@@ -74,7 +74,6 @@ class Post(db.Model):
     # Establish a many-to-one relationship between Post and User
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     author = db.relationship("User", back_populates="user_posts", lazy=True)
-    category = db.relationship("Category", back_populates="posts", lazy=True)
 
     # Establish a many-to-many relationship between Post and Category
     categories = db.relationship("Category", secondary="post_category", backref=db.backref("posts_relation", lazy=True))
