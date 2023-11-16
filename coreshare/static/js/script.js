@@ -23,10 +23,9 @@ $(document).ready(function() {
             $("form").removeAttr("onsubmit");
             $("#selectedCategory").val(selectedCategory);
         }
+        // Attach the function to the change event of the dropdown
+        $("#category_id").change(updateCategoryMessage);
     }
-
-    // Attach the function to the change event of the dropdown
-    $("#category_id").change(updateCategoryMessage);
 
     // Call the function initially to set the initial state
     updateCategoryMessage();
