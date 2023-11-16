@@ -50,8 +50,7 @@
   + [Creating an application with Heroku](#creating-an-application-with-heroku)
 - [Credits](#credits)
   + [Code](#code)
-  + [Media](#media)
-  + [Content](#content)
+  + [Media Content](#media-content)
   + [Acknowledgements](#acknowledgements)
 
 # User Experience
@@ -99,7 +98,8 @@ User can register and/or login. Users, can add a post by providing a name, descr
 On the home page, user can add new categories and/or view posts that have been created for specific categories. They can send the app owner a message, regarding any ideas to improvements, or buggs, and they can terminate their session, by logging out.
 
 ### Colour Scheme
-
+A combination of very bright and primary color, to get a litle attencion.! 
+![My color pallete](./coreshare/static/images/readme/coreshare-imgs/CoreShare-Color-Pallete.png)
 
 ### Typography
 
@@ -138,13 +138,17 @@ Nav structure, simple, responsive, compose of an img logo, two nav links, if the
 Footer follows the same principle as the navbar, responsive on all screens, with three sections, the app name, some social links and contact button.
 ![Footer](./coreshare/static/images/readme/coreshare-imgs/footer.png)
  
+
  ### Intro-Page
  The navbar has only two links, login and register. The page, as centered mid div, compose of the site name logo, a welcome, msg and login button to direct the user to the sign up page, as well as the footer at the bottom with a contact us link in case of some issues.
  ![Intro-page](./coreshare/static/images/readme/coreshare-imgs/intro-page.png)
 
+
  ### Home-Page
  The home page, is where user can create categories, and those will display on the page,being clickable, and if clicked it opens up a modal where it will display the posts that were created for those specify categories.
  ![Home-page](./coreshare/static/images/readme/coreshare-imgs/create_category-with-category.png)
+ The user can create categories, which requests a category name, and an image url, being the image optional, as a default on will be provided.
+ <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/add_category.png"></h2>
 
 
 ## Register and Log In Pages
@@ -154,26 +158,33 @@ Footer follows the same principle as the navbar, responsive on all screens, with
 <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/register-page.png"></h2>
 - The Register form features input fields for Username, First Name, Last Name and Password. All fields are required.
 
+
 ### My Posts
 - The user Posts, has a simple intro message, with the their username displayed on top followed by the create posts button. If posts have been created the user will see them displaying through an accordion(from bootstrap) that allows for a collapse effect, toggling the effect will then display the post name, followed by the description and two buttons, one for editing the other for deleting.
 <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/create_post-with-content.png"></h2>
 - Users can edit the post already created, the fields will be field from the previous post created making it easier to change something more specific.
 <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/edit_post.png"></h2>
 
+
 ### Contact-Page
 - Contact page to allow users to send a message, feedback, a comment, some ideas or complains,or simply a hello message, about the app. It has a form requiring a name, a textarea, for the subject, reason they are contacting. After the form submition, a thank you message will display.
 <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-page.png"></h2>
 <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-msg-sent.png"></h2>
 
+### Page-404 
+- A page to direct user, in case an error, back to the main page, in order to try again, as that may solve the issue encountered.
+![Page-404](./coreshare/static/images/readme/coreshare-imgs/page-404.png)
+
 # Future Features
 - In the future, I want to implement a small container on the navbar as well on "My Posts", so that the user may upload their photos, and provide them with flexibility, to style it to their own pleasing, as the page is very simple.
 - I hope to implement a comment section, where user may  exchange ideas, comments in real time.
 - Be able to also include videos, as per the site theme, there would be lot's of videos in need of sharing.
+- Implemente a timer from when the user no longer active, to prevent user being always log in.
 
 
 # Data Model
 
-- [View my Database structure in PDF form here]().
+- [View my Database diagram structure here](./coreshare/static/images/readme/wireframes/app-diagram.png).
 
 # Technologies Used
 
@@ -228,7 +239,7 @@ Footer follows the same principle as the navbar, responsive on all screens, with
 - [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
   - Google Chrome's Dev Tools were used while building the project to test responsiveness and for debugging.
 
-- [dbdiagram](https://dbdiagram.io/)
+- [LucydChart](https://lucid.app/)
   - Tool used to mock up database structure diagram.
 
 # Testing
@@ -277,7 +288,7 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 ```
 $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
-> Cloning into `gather-recipe-website`...
+> Cloning into `Third-Milestone-project`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
 > remove: Total 10 (delta 1), reused 10 (delta 1)
@@ -300,7 +311,7 @@ You will need to deploy the application using Heroku.
   - IP : 0.0.0.0
   - PORT : 5000
   
-  - SECRET_KEY : Your secret key
+  - SECRET_KEY : Your_secret_key
 10. Deploy your project by going to the Deploy tab and choose 'Connect to Github'
 11. Find your repository name and select Connect.
 12. To connect your Heroku database, go to 'More' in the top right and select run console. Enter ```python3``` to access the python intepreter.
@@ -308,22 +319,19 @@ You will need to deploy the application using Heroku.
 
 # Credits
 
-## Code
+## Code - Content
 
-- Materalize CSS: I used this library throughout the project. Particularly for the nav bar, cards, forms and buttons.
+- [Bootstrap](https://getbootstrap.com/docs/5.3/layout/containers/): I used this library throughout the project. Particularly for the nav bar, cards, forms and buttons.
 
-- W3Schools: I referred to guides on [Python Postgres]() amongst others.
+- [W3Schools](https://www.w3schools.com/sql/default.asp): I referred to guides.
+- [Youtube](https://www.youtube.com/) and guides on how to database errors, as I had a few issues when trying to deploy to [Heroku](https://dashboard.heroku.com/).
+- [CodeInstitute walkthrough relational database](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DIWADRDB+2022_Q3/courseware/c0c31790fcf540539fd2bd3678b12406/6e44128b0b37416ab40c1a87ef2cb32a/) Used the lessons, a multiple couple of times, as I got super confused, with few topcs.
+- [Pexels](https://www.pexels.com) and [Google images](https://images.google.co.uk/), so some of the images as well as the default one.
+- Email.js: [Code Institute emailJs walkthrough project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+IFD101+2017_T3/courseware/03d3f6524ad249d9b33e3336d156dfd0/e4710f80cdf34bffbd607bc102482d5c/?child=first)
 
-
-## Content
-
--
-
-## Media
-
--
 
 ## Acknowledgements
+I need to highlight the tutor support team, as for this project, at least for half a dozen times, I had issues, weirdly all mostly regarding deploying to heroku as there were always issues. But all as always sorted. Especially today, almost 4hours trying just to sort the heroku deployment.  Thank-you !
 
 
 Please note this is a personal project. This website is purely for the sake of the developer's portfolio and not for public consumption.
