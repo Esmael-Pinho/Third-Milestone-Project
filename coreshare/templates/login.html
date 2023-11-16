@@ -19,7 +19,7 @@
             </div>
     
             <div class="text-bg-warning form-signin w-100 m-auto">
-                <form method="POST" action="{{ url_for('login') }}">
+                <form method="POST" action="{{ url_for('login') }}" class="log-reg-cat">
                     <!--username-->
                     <div class="form-floating">
                         <input id="user_name" name="user_name" type="text" minlength="3" maxlength="30" pattern="^[a-zA-Z0-9]{3,30}$" class="validate form-control" placeholder=" Username" required />
