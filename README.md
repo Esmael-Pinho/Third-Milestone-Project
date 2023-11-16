@@ -131,34 +131,39 @@ On the home page, user can add new categories and/or view posts that have been c
 
 ### NavBar
 Nav structure, simple, responsive, compose of an img logo, two nav links, if the user is not logged in, which after becomes four nav links, being those: Home, My Posts, Contact Us and logout.
-![Navbar](./coreshare/static/images/coreshare-imgs/nav.png)
+![Navbar](./coreshare/static/images/readme/coreshare-imgs/nav.png)
 
 
 ### Footer 
 Footer follows the same principle as the navbar, responsive on all screens, with three sections, the app name, some social links and contact button.
-![Footer](./coreshare/static/images/coreshare-imgs/footer.png)
+![Footer](./coreshare/static/images/readme/coreshare-imgs/footer.png)
  
  ### Intro-Page
  The navbar has only two links, login and register. The page, as centered mid div, compose of the site name logo, a welcome, msg and login button to direct the user to the sign up page, as well as the footer at the bottom with a contact us link in case of some issues.
- ![Intro-page](./coreshare/static/images/coreshare-imgs/intro-page.png)
+ ![Intro-page](./coreshare/static/images/readme/coreshare-imgs/intro-page.png)
 
  ### Home-Page
  The home page, is where user can create categories, and those will display on the page,being clickable, and if clicked it opens up a modal where it will display the posts that were created for those specify categories.
- ![Home-page](./coreshare/static/images/coreshare-imgs/create_category-with-category.png)
+ ![Home-page](./coreshare/static/images/readme/coreshare-imgs/create_category-with-category.png)
 
 
 ## Register and Log In Pages
-
-<h2 align="center"><img src=""></h2>
-
-<h2 align="center"><img src=""></h2>
-
+- The Log in form features input fields for Username and Password. All fields are required.
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/login-page.png"></h2>
 - The Register and Log in pages both feature forms, a login and register buttons, and a link to the other page incase a user is in the wrong place. E.g. on the Register Page, it says "Already Registered? Log in here."
-
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/register-page.png"></h2>
 - The Register form features input fields for Username, First Name, Last Name and Password. All fields are required.
 
-- The Log in form features input fields for Username and Password. All fields are required.
+### My Posts
+- The user Posts, has a simple intro message, with the their username displayed on top followed by the create posts button. If posts have been created the user will see them displaying through an accordion(from bootstrap) that allows for a collapse effect, toggling the effect will then display the post name, followed by the description and two buttons, one for editing the other for deleting.
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/create_post-with-content.png"></h2>
+- Users can edit the post already created, the fields will be field from the previous post created making it easier to change something more specific.
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/edit_post.png"></h2>
 
+### Contact-Page
+- Contact page to allow users to send a message, feedback, a comment, some ideas or complains,or simply a hello message, about the app. It has a form requiring a name, a textarea, for the subject, reason they are contacting. After the form submition, a thank you message will display.
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-page.png"></h2>
+<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-msg-sent.png"></h2>
 
 # Future Features
 - In the future, I want to implement a small container on the navbar as well on "My Posts", so that the user may upload their photos, and provide them with flexibility, to style it to their own pleasing, as the page is very simple.
