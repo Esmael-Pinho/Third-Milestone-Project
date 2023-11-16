@@ -25,7 +25,5 @@ db = SQLAlchemy(app)
 def page_not_found(e):
     return render_template('page-404.html'), 404
 
-if __name__ == "__main__":
-    app.run(debug=True)
 
 from coreshare import routes  # noqa
