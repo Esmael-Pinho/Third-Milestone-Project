@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 
 // form
 const originalFormContent = $("#contact-form").html();
@@ -13,7 +14,7 @@ emailjs.send("gmail", "pinho", {
 .then(
     function(response) {
         console.log("SUCCESS", response);
-        $("#contact-btn").val("Msg Sent") 
+        $("#contact-btn").val("Msg Sent"); 
         $("#contact-form").hide();
         $(".thank-you-container").show();
         showThankYou();

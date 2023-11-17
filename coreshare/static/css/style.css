@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------- IMPORTS----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Oswald:wght@500&family=Roboto+Mono&family=Ubuntu:wght@400;700&display=swap');
+
 /* ------------------------------------------------RESETS */
 *,
 *::before,
@@ -9,14 +12,13 @@
     padding: 0;
     margin: 0;
 }
-/* -------------------------------------------------------------- IMPORTS----------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Oswald:wght@500&family=Roboto+Mono&family=Ubuntu:wght@400;700&display=swap');
 
+/* Root */
 
 :root {
   --black: #000;
   --light-blue: #40a6da;
-  --grey: #9e9c9c;
+  --grey: #737171;
   --red: #e61a21;
   --light-red: #e74536;
   --white: #fff;
@@ -77,6 +79,8 @@ html, body {
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: bold;
+    color: var(--white);
+    border-color: var(--white);
 }
 
 .navbar-brand {

@@ -13,9 +13,7 @@
 
         // Function to show/hide the message based on the selected value
         function updateCategoryMessage() {
-            console.log("Before: Selected Category:", $("#category_id").val());
             var selectedCategory = $("#category_id").val();
-            console.log("Selected Category:", selectedCategory);
             if (!selectedCategory || selectedCategory === "Choose Category") {
                 $("#categoryMessage").show();
                 // Disable the form submission 
@@ -38,8 +36,3 @@
 
     });
   
-  
-  
-  
-  
-    
