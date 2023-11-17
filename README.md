@@ -2,7 +2,7 @@
 
 ## Milestone Project 3 
 
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/Am-Responsive.png"></h2>
+![Responsive-app](./coreshare/static/images/readme/coreshare-imgs/Am-Responsive.png)
 
 * CoreShare is a Christmas sharing website which allows users to post anything about their day, their food, good moments, etc. As well as view those submitted by other members. The website design is responsive so it can be used on any device.
 
@@ -148,28 +148,30 @@ Footer follows the same principle as the navbar, responsive on all screens, with
  The home page, is where user can create categories, and those will display on the page,being clickable, and if clicked it opens up a modal where it will display the posts that were created for those specify categories.
  ![Home-page](./coreshare/static/images/readme/coreshare-imgs/create_category-with-category.png)
  The user can create categories, which requests a category name, and an image url, being the image optional, as a default on will be provided.
- <h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/add_category.png"></h2>
+ ![Add_categories](./coreshare/static/images/readme/coreshare-imgs/add_category.png)
+ User can also edit their category, either by changing the name, image, or both.
+ ![Edit_category](./coreshare/static/images/readme/coreshare-imgs/edit_category.png)
 
 
 ## Register and Log In Pages
 - The Log in form features input fields for Username and Password. All fields are required.
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/login-page.png"></h2>
+![Login Page](./coreshare/static/images/readme/coreshare-imgs/login-page.png)
 - The Register and Log in pages both feature forms, a login and register buttons, and a link to the other page incase a user is in the wrong place. E.g. on the Register Page, it says "Already Registered? Log in here."
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/register-page.png"></h2>
+![Register Page](./coreshare/static/images/readme/coreshare-imgs/register-page.png)
 - The Register form features input fields for Username, First Name, Last Name and Password. All fields are required.
 
 
 ### My Posts
 - The user Posts, has a simple intro message, with the their username displayed on top followed by the create posts button. If posts have been created the user will see them displaying through an accordion(from bootstrap) that allows for a collapse effect, toggling the effect will then display the post name, followed by the description and two buttons, one for editing the other for deleting.
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/create_post-with-content.png"></h2>
+![Add_posts](./coreshare/static/images/readme/coreshare-imgs/add_post.png)
 - Users can edit the post already created, the fields will be field from the previous post created making it easier to change something more specific.
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/edit_post.png"></h2>
+![Edit_posts](./coreshare/static/images/readme/coreshare-imgs/edit_post.png)
 
 
 ### Contact-Page
 - Contact page to allow users to send a message, feedback, a comment, some ideas or complains,or simply a hello message, about the app. It has a form requiring a name, a textarea, for the subject, reason they are contacting. After the form submition, a thank you message will display.
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-page.png"></h2>
-<h2 align="center"><img src="./coreshare/static/images/readme/coreshare-imgs/contact-msg-sent.png"></h2>
+![Contact-page](./coreshare/static/images/readme/coreshare-imgs/contact-page.png)
+![Contact-with-message](./coreshare/static/images/readme/coreshare-imgs/contact-msg-sent.png)
 
 ### Page-404 
 - A page to direct user, in case an error, back to the main page, in order to try again, as that may solve the issue encountered.
@@ -209,9 +211,6 @@ Footer follows the same principle as the navbar, responsive on all screens, with
 - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
   - Templating language I've used with Python to add logic to my html templates.
 
-- [Materialize CSS](https://materializecss.com/)
-  - Front-end library with HTML, CSS and Javascript based componants. I used features including Nav bar, Cards, Buttons and Forms.
-
 - [jQuery](https://jquery.com/)
   - I used jQuery to add functionality to MaterialiseCSS.
 
@@ -248,14 +247,14 @@ Footer follows the same principle as the navbar, responsive on all screens, with
 
 | **Intro** | **Login** | **Register** | **Contact** | **Home** | **Posts** |
 |-----------|-----------|--------------|-------------|----------|-----------|
-| ![Intro](./coreshare/static/images/readme/testing/intro-html-test.png) | ![Login](./coreshare/static/images/readme/testing/login-html-test.png) | ![Register](./coreshare/static/images/readme/testing/) | ![Contact](./coreshare/static/images/readme/testing/contact-page-html-test.png) | ![Home](./coreshare/static/images/readme/testing/categories-html-test.png) | ![Posts](./coreshare/static/images/readme/testing/posts-html-test.png) |
+| ![Intro](./coreshare/static/images/readme/testing/intro-html-test.png) | ![Login](./coreshare/static/images/readme/testing/login-html-test.png) | ![Register](./coreshare/static/images/readme/testing/register-html-test.png) | ![Contact](./coreshare/static/images/readme/testing/contact-html-test.png) | ![Home](./coreshare/static/images/readme/testing/categories-html-test.png) | ![Posts](./coreshare/static/images/readme/testing/posts-html-test.png) |
 |* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |
 ---
 - Add/Edit pages and Css
 
 | **Add_category** | **Edit_category** | **Add_post** | **Edit_post** | **Css** |
 |------------------|-------------------|--------------|---------------|---------|
-| ![Add_category](./coreshare/static/images/readme/testing/add_category-html-test.png) | ![Edit_category]() | ![Add_post](./coreshare/static/images/readme/testing/) | ![Edit_post](./coreshare/static/images/readme/testing/) | ![CSS](./coreshare/static/images/readme/testing/css-W3C-test.png) |
+| ![Add_category](./coreshare/static/images/readme/testing/add_category-html-test.png) | ![Edit_category](./coreshare/static/images/readme/testing/edit_category-html-test.png) | ![Add_post](./coreshare/static/images/readme/testing/add_post-html-test.png) | ![Edit_post](./coreshare/static/images/readme/testing/edit_post-html-test.png) | ![CSS](./coreshare/static/images/readme/testing/css-W3C-test.png) |
 |* No issues found  |* No issues found  |* No issues found  |* No issues found  |* No issues found |
 
 
@@ -268,8 +267,22 @@ Footer follows the same principle as the navbar, responsive on all screens, with
 |* Warning: 1 undefined variables -$- . It kept saying that the jquery symbol was undefined, I did search as to why that could be but couldn't find any reason. |* Warnings: 2 undefined variables -$- and emailjs, but sendEmail is link on the base page. |
 
 
+### Lighthouse
+ - Main pages 
 
+| **Intro** | **Login** | **Register** | **Contact** | **Home** | **Posts** |
+|-----------|-----------|--------------|-------------|----------|-----------|
+| ![Intro](./coreshare/static/images/readme/testing/lighthouse/intro-lighthouse-test.png) | ![Login](./coreshare/static/images/readme/testing/lighthouse/login-test-lighthouse.png) | ![Register](./coreshare/static/images/readme/testing/lighthouse/register-lighthouse-test.png) | ![Contact](./coreshare/static/images/readme/testing/lighthouse/contact-lighthouse-test.png) | ![Home](./coreshare/static/images/readme/testing/lighthouse/home-lighthouse-test.png) | ![Posts](./coreshare/static/images/readme/testing/lighthouse/post-lighthouse-test.png) |
+|* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |
+---
+- Add/Edit pages
 
+| **Add_category** | **Edit_category** | **Add_post** | **Edit_post** |
+|------------------|-------------------|--------------|---------------|
+| ![Add_category](./coreshare/static/images/readme/testing/lighthouse/add-category-lighthouse-test.png) | ![Edit_category](./coreshare/static/images/readme/testing/lighthouse/edit_category-lighthouse-test.png) | ![Add_post](./coreshare/static/images/readme/testing/lighthouse/add_post-lighthouse-test.png) | ![Edit_post](./coreshare/static/images/readme/testing/lighthouse/edit_post-lighthouse-test.png) | ![CSS](./coreshare/static/images/readme/testing/css-W3C-test.png) |
+|* No issues found  |* No issues found  |* No issues found  |* No issues found  |
+
+* *Note:  majority of performance and accessibility, were affected my the extensions I have on the browsers.
 
 # Deployment
 
