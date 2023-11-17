@@ -241,6 +241,11 @@ def add_post():
 
 @app.route("/edit_post/<int:post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
+    if 'user' not in session:
+        # User is not logged in, redirect to login page
+        flash("User not found in session. Please log in.", category="error")
+        return redirect(url_for('login'))
+
     post = Post.query.get_or_404(post_id)
     categories = list(Category.query.order_by(Category.category_name).all())
 

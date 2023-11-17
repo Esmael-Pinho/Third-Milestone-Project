@@ -243,8 +243,33 @@ Footer follows the same principle as the navbar, responsive on all screens, with
   - Tool used to mock up database structure diagram.
 
 # Testing
+### W3C Validator
+ - Main pages 
 
-- 
+| **Intro** | **Login** | **Register** | **Contact** | **Home** | **Posts** |
+|-----------|-----------|--------------|-------------|----------|-----------|
+| ![Intro](./coreshare/static/images/readme/testing/intro-html-test.png) | ![Login](./coreshare/static/images/readme/testing/login-html-test.png) | ![Register](./coreshare/static/images/readme/testing/) | ![Contact](./coreshare/static/images/readme/testing/contact-page-html-test.png) | ![Home](./coreshare/static/images/readme/testing/categories-html-test.png) | ![Posts](./coreshare/static/images/readme/testing/posts-html-test.png) |
+|* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |* No issues found |
+---
+- Add/Edit pages and Css
+
+| **Add_category** | **Edit_category** | **Add_post** | **Edit_post** | **Css** |
+|------------------|-------------------|--------------|---------------|---------|
+| ![Add_category](./coreshare/static/images/readme/testing/add_category-html-test.png) | ![Edit_category]() | ![Add_post](./coreshare/static/images/readme/testing/) | ![Edit_post](./coreshare/static/images/readme/testing/) | ![CSS](./coreshare/static/images/readme/testing/css-W3C-test.png) |
+|* No issues found  |* No issues found  |* No issues found  |* No issues found  |* No issues found |
+
+
+
+### JShint
+
+| **Script.js** | **Email.js** |
+|---------------|--------------|
+| ![Script test](./coreshare/static/images/readme/testing/script-JSHint-test.png) | ![Email test](./coreshare/static/images/readme/testing/email.js-JSHint-test.png) |
+|* Warning: 1 undefined variables -$- . It kept saying that the jquery symbol was undefined, I did search as to why that could be but couldn't find any reason. |* Warnings: 2 undefined variables -$- and emailjs, but sendEmail is link on the base page. |
+
+
+
+
 
 # Deployment
 
