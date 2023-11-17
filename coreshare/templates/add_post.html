@@ -12,24 +12,24 @@
                     <!-- Post Name -->
                     <li class="list-group-item">
                         <i class="fas fa-pencil-alt"></i> <label for="post_name"> Post Name</label>
-                        <input for="post_name" class="form-control" id="post_name" name="post_name" type="text" placeholder=" Post name " required>
+                        <input  class="form-control" id="post_name" name="post_name" type="text" placeholder=" Post name " required>
                     </li>
                     <!-- Post Description -->
                     <li class="list-group-item form-group-textarea">
                         <i class="fas fa-align-left"></i> <label for="post_description"> Description</label>
-                        <textarea for="post_description" class="form-control" id="post_description" name="post_description" placeholder=" Your post description *" required></textarea>
+                        <textarea  class="form-control" id="post_description" name="post_description" placeholder=" Your post description *" required></textarea>
                     </li>
                     <!-- Image URL -->
                     <li class="list-group-item">
                         <i class="fa-regular fa-image"></i> <label for="post_image_url"> Image</label>
-                        <input for="post_image_url" id="post_image_url" name="post_image_url" type="text" class="form-control" placeholder=" Place your image URL here *">
+                        <input  id="post_image_url" name="post_image_url" type="text" class="form-control" placeholder=" Place your image URL here *">
                     </li>
                     <!-- Select from Post Category-->
                     <li class="list-group-item">
                         <i class="fas fa-folder-open"></i>
                         <label for="category_id"> Category</label>
                         <select id="category_id" name="category_id" class="form-select" aria-label=" Category Select options" required>
-                            <option disabled selected>Choose Category</option>
+                            <option disabled selected value="">Choose Category</option>
                             {% for category in categories %}
                                 <option value="{{ category.id }}">{{ category.category_name }}</option>
                             {% endfor %}
@@ -38,9 +38,9 @@
                             <span class="red">* Please first select a category to add a post.</span>
                         </small>
                     </li>
-                    <!-- Add a hidden input field to store the selected category -->
-                    <input type="hidden" id="selectedCategory" name="selectedCategory" value="">
                 </ul>
+                <!-- Add a hidden input field to store the selected category -->
+                <input type="hidden" id="selectedCategory" name="selectedCategory" value="">
             
                 <!-- Submi a Post -->
                 <div class="row">

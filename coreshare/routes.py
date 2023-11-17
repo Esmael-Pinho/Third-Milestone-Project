@@ -164,8 +164,13 @@ def delete_category(category_id):
 
 @app.route("/posts")
 def posts():
-    # Retrieve the user_id of the currently logged-in user
-    user = User.query.filter_by(user_name=session["user"]).first()
+    if "user" in session:
+        user = User.query.filter_by(user_name=session["user"]).first()
+    else:
+        # Handle the case when 'user' is not in the session
+        flash("User not found in session. Please log in.", category="error")
+        return redirect(url_for("login"))
+
 
     if user:
         # Fetch posts associated with the logged-in user
